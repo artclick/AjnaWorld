@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ajna · June · Farm Month</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FAF6EF;
+    --warm: #F5EDD8;
+    --earth: #C4956A;
+    --deep: #3D2B1F;
+    --green: #7A9E7E;
+    --sage: #B5C9B7;
+    --rust: #C4622D;
+    --gold: #D4A853;
+    --light-rust: #F2E4D8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    color: var(--deep);
+    overflow-x: hidden;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: var(--deep);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 30% 50%, rgba(196,149,106,0.15) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 20%, rgba(122,158,126,0.1) 0%, transparent 50%);
+  }
+
+  .hero-tag {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--earth);
+    margin-bottom: 24px;
+    position: relative;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(52px, 12vw, 96px);
+    font-weight: 400;
+    color: var(--cream);
+    line-height: 0.9;
+    margin-bottom: 8px;
+    position: relative;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-subtitle {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(18px, 4vw, 28px);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--sage);
+    margin-bottom: 48px;
+    position: relative;
+  }
+
+  .hero-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    position: relative;
+  }
+
+  .pill {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: var(--cream);
+    padding: 8px 18px;
+    border-radius: 99px;
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: 0.03em;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255,255,255,0.3);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; transform: scaleY(1); }
+    50% { opacity: 0.8; transform: scaleY(1.1); }
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 80px 24px;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .section-tag {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--earth);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-tag::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--earth);
+    opacity: 0.3;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 6vw, 52px);
+    font-weight: 400;
+    line-height: 1.1;
+    margin-bottom: 40px;
+  }
+
+  /* WHAT HE NEEDS */
+  .needs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .need-card {
+    background: var(--deep);
+    color: var(--cream);
+    border-radius: 20px;
+    padding: 28px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .need-card::before {
+    content: attr(data-emoji);
+    position: absolute;
+    top: -8px;
+    right: -4px;
+    font-size: 64px;
+    opacity: 0.12;
+    line-height: 1;
+  }
+
+  .need-card .need-emoji {
+    font-size: 28px;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .need-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--gold);
+  }
+
+  .need-card p {
+    font-size: 13px;
+    line-height: 1.6;
+    color: rgba(250,246,239,0.7);
+    font-weight: 300;
+  }
+
+  .need-card.highlight {
+    background: var(--rust);
+    grid-column: span 2;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .need-card.highlight h3 { color: var(--cream); }
+  .need-card.highlight p { color: rgba(250,246,239,0.85); }
+
+  /* MONTESSORI */
+  .montessori-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .montessori-item {
+    background: var(--warm);
+    border-radius: 16px;
+    padding: 20px 24px;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    border-left: 3px solid var(--earth);
+  }
+
+  .montessori-icon {
+    font-size: 28px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .montessori-item h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  .montessori-item p {
+    font-size: 13px;
+    color: #6B5A4A;
+    line-height: 1.5;
+    font-weight: 300;
+  }
+
+  /* FARM THEME */
+  .farm-section {
+    background: var(--deep);
+    color: var(--cream);
+    padding: 80px 0;
+    margin: 0;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .farm-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .farm-section .section-tag { color: var(--gold); }
+  .farm-section .section-tag::after { background: var(--gold); }
+  .farm-section .section-title { color: var(--cream); }
+
+  .animals-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 48px;
+  }
+
+  .animal-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px;
+    padding: 20px 16px;
+    text-align: center;
+    transition: background 0.2s;
+  }
+
+  .animal-card:hover { background: rgba(255,255,255,0.1); }
+
+  .animal-emoji { font-size: 36px; margin-bottom: 8px; display: block; }
+
+  .animal-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--cream);
+    margin-bottom: 4px;
+  }
+
+  .animal-sound {
+    font-size: 12px;
+    color: var(--gold);
+    font-style: italic;
+    font-weight: 300;
+  }
+
+  .sensory-ideas {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+
+  .sensory-card {
+    background: rgba(196,149,106,0.15);
+    border: 1px solid rgba(196,149,106,0.3);
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .sensory-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 400;
+    color: var(--earth);
+    line-height: 1;
+    flex-shrink: 0;
+    width: 40px;
+  }
+
+  .sensory-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    margin-bottom: 6px;
+    color: var(--cream);
+  }
+
+  .sensory-card p {
+    font-size: 12px;
+    color: rgba(250,246,239,0.65);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  .wall-ideas {
+    background: rgba(122,158,126,0.15);
+    border: 1px solid rgba(122,158,126,0.3);
+    border-radius: 20px;
+    padding: 28px;
+  }
+
+  .wall-ideas h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    margin-bottom: 16px;
+    color: var(--sage);
+  }
+
+  .wall-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .wall-list li {
+    font-size: 13px;
+    color: rgba(250,246,239,0.75);
+    padding-left: 20px;
+    position: relative;
+    line-height: 1.5;
+    font-weight: 300;
+  }
+
+  .wall-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--green);
+  }
+
+  /* ART */
+  .art-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .art-card {
+    border-radius: 20px;
+    padding: 28px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .art-card.primary {
+    background: var(--rust);
+    color: var(--cream);
+    grid-column: span 2;
+  }
+
+  .art-card.secondary {
+    background: var(--warm);
+    color: var(--deep);
+  }
+
+  .art-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+
+  .art-card p {
+    font-size: 13px;
+    line-height: 1.6;
+    opacity: 0.8;
+    font-weight: 300;
+  }
+
+  .art-card .art-emoji {
+    font-size: 40px;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .art-tip {
+    margin-top: 12px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-size: 12px;
+    font-style: italic;
+  }
+
+  /* PLAY */
+  .play-items {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .play-item {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    padding: 24px;
+    background: var(--warm);
+    border-radius: 16px;
+  }
+
+  .play-item-icon {
+    font-size: 36px;
+    flex-shrink: 0;
+  }
+
+  .play-item h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    margin-bottom: 6px;
+  }
+
+  .play-item p {
+    font-size: 13px;
+    color: #6B5A4A;
+    line-height: 1.5;
+    font-weight: 300;
+  }
+
+  .play-item .play-tag {
+    display: inline-block;
+    margin-top: 8px;
+    background: var(--earth);
+    color: white;
+    font-size: 10px;
+    padding: 3px 10px;
+    border-radius: 99px;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+  }
+
+  /* MATHS */
+  .maths-section {
+    background: var(--green);
+    padding: 80px 0;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .maths-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .maths-section .section-tag { color: var(--deep); opacity: 0.6; }
+  .maths-section .section-tag::after { background: var(--deep); opacity: 0.3; }
+  .maths-section .section-title { color: var(--deep); }
+
+  .maths-concepts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+
+  .maths-concept {
+    background: rgba(255,255,255,0.25);
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .concept-pair {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--deep);
+    margin-bottom: 6px;
+  }
+
+  .concept-example {
+    font-size: 12px;
+    color: rgba(61,43,31,0.7);
+    font-weight: 300;
+    font-style: italic;
+  }
+
+  .maths-tip {
+    background: var(--deep);
+    color: var(--cream);
+    border-radius: 20px;
+    padding: 28px;
+  }
+
+  .maths-tip h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    margin-bottom: 12px;
+    color: var(--gold);
+  }
+
+  .maths-tip p {
+    font-size: 13px;
+    line-height: 1.7;
+    color: rgba(250,246,239,0.8);
+    font-weight: 300;
+  }
+
+  /* RESOURCES */
+  .resources-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .resource-category {
+    background: var(--warm);
+    border-radius: 16px;
+    padding: 20px;
+  }
+
+  .resource-category.full {
+    grid-column: span 2;
+    background: var(--deep);
+    color: var(--cream);
+  }
+
+  .resource-category h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--earth);
+  }
+
+  .resource-category.full h4 { color: var(--gold); }
+
+  .resource-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .resource-list li {
+    font-size: 12px;
+    color: #6B5A4A;
+    padding-left: 16px;
+    position: relative;
+    line-height: 1.4;
+    font-weight: 300;
+  }
+
+  .resource-category.full .resource-list li { color: rgba(250,246,239,0.7); }
+
+  .resource-list li::before {
+    content: '·';
+    position: absolute;
+    left: 4px;
+    color: var(--earth);
+    font-weight: bold;
+  }
+
+  /* GOLDEN RULE */
+  .golden-rule {
+    background: var(--gold);
+    padding: 60px 24px;
+    text-align: center;
+  }
+
+  .golden-rule p {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(20px, 4vw, 32px);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--deep);
+    max-width: 560px;
+    margin: 0 auto;
+    line-height: 1.4;
+  }
+
+  .golden-rule strong {
+    font-weight: 600;
+    font-style: normal;
+  }
+
+  /* DIVIDER */
+  .divider {
+    width: 60px;
+    height: 1px;
+    background: var(--earth);
+    opacity: 0.4;
+    margin: 0 auto 48px;
+  }
+
+  /* FADE IN */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 480px) {
+    .needs-grid { grid-template-columns: 1fr; }
+    .need-card.highlight { flex-direction: column; }
+    .animals-grid { grid-template-columns: repeat(2, 1fr); }
+    .art-cards { grid-template-columns: 1fr; }
+    .art-card.primary { grid-column: span 1; }
+    .maths-concepts { grid-template-columns: 1fr; }
+    .resources-grid { grid-template-columns: 1fr; }
+    .resource-category.full { grid-column: span 1; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">Ajna's World · June 2026</div>
+  <h1 class="hero-title">Month <em>13</em></h1>
+  <p class="hero-subtitle">The Farm Month</p>
+  <div class="hero-pills">
+    <span class="pill">🐄 Farm Animals</span>
+    <span class="pill">🌾 Language</span>
+    <span class="pill">🎨 First Art</span>
+    <span class="pill">🧠 Early Maths</span>
+    <span class="pill">🌿 Sensory Play</span>
+  </div>
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    scroll
+  </div>
+</div>
+
+<!-- WHAT HE NEEDS -->
+<section class="fade-in">
+  <div class="section-tag">This month</div>
+  <h2 class="section-title">What Ajna needs<br>to learn</h2>
+  <div class="needs-grid">
+    <div class="need-card" data-emoji="🖐️">
+      <span class="need-emoji">🖐️</span>
+      <h3>Hands First</h3>
+      <p>He learns through touch before anything else. Let him feel, squeeze, dig and explore before naming anything.</p>
+    </div>
+    <div class="need-card" data-emoji="🔁">
+      <span class="need-emoji">🔁</span>
+      <h3>Repetition</h3>
+      <p>Doing the same thing 20 times isn't boring — it's how his brain builds the connection. Follow his lead.</p>
+    </div>
+    <div class="need-card" data-emoji="💬">
+      <span class="need-emoji">💬</span>
+      <h3>Your Words</h3>
+      <p>Name what he touches. "Cow. Big cow. The cow says moo." Simple, specific, attached to what he's doing right now.</p>
+    </div>
+    <div class="need-card" data-emoji="⏱️">
+      <span class="need-emoji">⏱️</span>
+      <h3>Short Sessions</h3>
+      <p>5–10 minutes of full engagement is perfect. Don't extend past his interest. End while he still wants more.</p>
+    </div>
+    <div class="need-card highlight" data-emoji="🌟">
+      <span class="need-emoji" style="font-size:40px">🌟</span>
+      <div>
+        <h3>The Golden Rule</h3>
+        <p>He doesn't need lessons. He needs you beside him, present and curious, while he explores. Your calm attention is the most developmental thing in the room.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MONTESSORI -->
+<section class="fade-in">
+  <div class="section-tag">Montessori ideas</div>
+  <h2 class="section-title">Simple activities<br>with big impact</h2>
+  <div class="montessori-list">
+    <div class="montessori-item">
+      <span class="montessori-icon">🔓</span>
+      <div>
+        <h4>Open & Close Lids</h4>
+        <p>Tupperware containers, spice jars, small boxes. He's obsessed with mechanisms. Let him open, close, open again. Don't rush him. Every open-close is a fine motor win.</p>
+      </div>
+    </div>
+    <div class="montessori-item">
+      <span class="montessori-icon">🪣</span>
+      <div>
+        <h4>Fill & Empty</h4>
+        <p>Two bowls, any small objects — pasta, stones, balls. Transfer from one to the other with hands. This is early maths: full, empty, more, less. Narrate as he goes.</p>
+      </div>
+    </div>
+    <div class="montessori-item">
+      <span class="montessori-icon">🪆</span>
+      <div>
+        <h4>Nest & Stack</h4>
+        <p>Stacking cups in both directions — up and inside each other. The nesting direction is harder and newer. Model it slowly, let him try.</p>
+      </div>
+    </div>
+    <div class="montessori-item">
+      <span class="montessori-icon">📮</span>
+      <div>
+        <h4>Object Permanence</h4>
+        <p>The DoubleYX ball drop — he drops the ball through the hole, it disappears, reappears below. The disappearing object is deeply satisfying. He'll run this experiment over and over. That repetition is the whole lesson.</p>
+      </div>
+    </div>
+    <div class="montessori-item">
+      <span class="montessori-icon">🔩</span>
+      <div>
+        <h4>Nuts & Bolts</h4>
+        <p>From his tool set — large wooden nuts on bolts. You start the thread, he turns to tighten. A completely new wrist rotation movement he hasn't encountered yet.</p>
+      </div>
+    </div>
+    <div class="montessori-item">
+      <span class="montessori-icon">📚</span>
+      <div>
+        <h4>Language Basket</h4>
+        <p>3 farm animal figurines on a small tray. Pick up the cow, say "cow," make the sound. Let him hold it. Put it down. That's the whole activity. Do it 3x a week, 3 different animals at a time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FARM THEME -->
+<div class="farm-section fade-in">
+  <div class="farm-inner">
+    <div class="section-tag">June theme</div>
+    <h2 class="section-title">Farm & Farm Animals</h2>
+
+    <!-- Animals -->
+    <div class="animals-grid">
+      <div class="animal-card">
+        <span class="animal-emoji">🐄</span>
+        <div class="animal-name">Cow</div>
+        <div class="animal-sound">Moooo</div>
+      </div>
+      <div class="animal-card">
+        <span class="animal-emoji">🐷</span>
+        <div class="animal-name">Pig</div>
+        <div class="animal-sound">Oink oink</div>
+      </div>
+      <div class="animal-card">
+        <span class="animal-emoji">🐑</span>
+        <div class="animal-name">Sheep</div>
+        <div class="animal-sound">Baaaa</div>
+      </div>
+      <div class="animal-card">
+        <span class="animal-emoji">🐔</span>
+        <div class="animal-name">Chicken</div>
+        <div class="animal-sound">Cluck cluck</div>
+      </div>
+      <div class="animal-card">
+        <span class="animal-emoji">🦆</span>
+        <div class="animal-name">Duck</div>
+        <div class="animal-sound">Quack quack</div>
+      </div>
+      <div class="animal-card">
+        <span class="animal-emoji">🐴</span>
+        <div class="animal-name">Horse</div>
+        <div class="animal-sound">Neigh</div>
+      </div>
+    </div>
+
+    <!-- Sensory Play -->
+    <p style="font-family:'Playfair Display',serif; font-size:24px; color:var(--gold); margin-bottom:24px; font-style:italic;">Sensory Play Ideas</p>
+    <div class="sensory-ideas">
+      <div class="sensory-card">
+        <div class="sensory-num">01</div>
+        <div>
+          <h4>Chocolate Mud Farm</h4>
+          <p>Cocoa powder + cornstarch + water = mud. Hide sheep and pig figurines inside. He digs them out with his hands. Name each animal as it appears. The Snoqualmie stones add texture. Already done once — he loved it.</p>
+        </div>
+      </div>
+      <div class="sensory-card">
+        <div class="sensory-num">02</div>
+        <div>
+          <h4>Milk Sensory Tray</h4>
+          <p>Full-fat cow's milk in the white salad bowl. Froth with a handheld frother — completely mouth safe. Add cow figurines. Small cups for pouring. "The cow makes milk. White milk. Pour the milk." Connects animal to food.</p>
+        </div>
+      </div>
+      <div class="sensory-card">
+        <div class="sensory-num">03</div>
+        <div>
+          <h4>Oobleck Dig</h4>
+          <p>Cornstarch + water + green food colouring = farm field. Animals half-buried inside. He excavates. The oobleck behaves like both solid and liquid — genuinely surprising every time he squeezes it.</p>
+        </div>
+      </div>
+      <div class="sensory-card">
+        <div class="sensory-num">04</div>
+        <div>
+          <h4>Dry Rice Discovery</h4>
+          <p>A bowl of dry rice or oats, animals buried inside. Different texture from oobleck — dry, light, rustling sound. He scoops, pours, finds animals. Simpler setup, great for a quick weekday activity.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Wall Decal Ideas -->
+    <div class="wall-ideas" style="margin-top:32px">
+      <h4>🎨 Magnetic Wall Ideas</h4>
+      <ul class="wall-list">
+        <li>Tape a large A3 green paper sheet to the wall at his height — instant farm field for the figurines to stand against</li>
+        <li>Finger paint directly on A3 paper taped to the wall — vertical surface painting uses different muscles and feels different from tray painting</li>
+        <li>Place 2 animal magnets on the wall, name them, let him move them around — the magnetic click is cause and effect he loves</li>
+        <li>Draw a simple barn outline on paper, tape to wall — put the animals "inside" and "outside" the barn. In, out, more, less.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ART -->
+<section class="fade-in">
+  <div class="section-tag">Art</div>
+  <h2 class="section-title">First mark-making</h2>
+  <div class="art-cards">
+    <div class="art-card primary">
+      <span class="art-emoji">✋</span>
+      <h3>Finger Painting</h3>
+      <p>One colour only. Tape an A3 sheet to the wall or high chair tray. No brush — just hands. He moves his hand, colour appears. That cause and effect is the whole lesson. Don't direct, don't demonstrate too much. Just be beside him.</p>
+      <div class="art-tip">Try: dark paper + light paint. The contrast makes his marks more dramatic and satisfying.</div>
+    </div>
+    <div class="art-card secondary">
+      <span class="art-emoji">🖍️</span>
+      <h3>Honeysticks Crayons</h3>
+      <p>One crayon at a time. Fist grip is correct at this age. Tape paper to the magnetic wall at standing height. Make marks alongside him on your own paper.</p>
+    </div>
+    <div class="art-card secondary">
+      <span class="art-emoji">🎨</span>
+      <h3>Coloured Paper</h3>
+      <p>The IKEA coloured paper — try dark green or brown paper for the farm theme. Even before he marks it, naming the colour of the paper is language basket work.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PLAY -->
+<section class="fade-in">
+  <div class="section-tag">Play</div>
+  <h2 class="section-title">Blocks &<br>construction</h2>
+  <div class="play-items">
+    <div class="play-item">
+      <span class="play-item-icon">🦊</span>
+      <div>
+        <h4>Woodland Blockables</h4>
+        <p>Fox, beaver, grey base. He can remove the head but not insert it yet — that's the challenge to work on this month. You align the peg above the hole, he pushes down. Celebrate every success. Fade your help gradually week by week.</p>
+        <span class="play-tag">Fine motor · ZPD</span>
+      </div>
+    </div>
+    <div class="play-item">
+      <span class="play-item-icon">🧩</span>
+      <div>
+        <h4>Farm Hide & Seek Puzzle</h4>
+        <p>Lift the piece, find the hidden animal underneath, name it. He'll lift pieces but won't replace them correctly yet — that's fine. Lifting and naming is the whole activity for June. Replacing comes later. The reveal moment is the reward.</p>
+        <span class="play-tag">Object permanence · Farm vocabulary</span>
+      </div>
+    </div>
+    <div class="play-item">
+      <span class="play-item-icon">🎵</span>
+      <div>
+        <h4>Xylophone & Musical Instruments</h4>
+        <p>He's really enjoying the xylophone this week — follow that. Strike different bars, hear different sounds. Grandma can tap a rhythm and wait for him to copy. The rattles and shakers are cause and effect — shake, hear the sound, shake again. Music is early maths: pattern, rhythm, loud and quiet.</p>
+        <span class="play-tag">Music · Pattern · Cause & effect</span>
+      </div>
+    </div>
+    <div class="play-item">
+      <span class="play-item-icon">🌈</span>
+      <div>
+        <h4>Coloured Cloth Play</h4>
+        <p>The sheer translucent coloured cloths are surprisingly rich for this age. Float one over his head — peekaboo with colour. Lay them flat and place farm animals on top — the colour shows through underneath. Hold one up to the light and watch his face as the colour changes the room. Scrunch, wave, drag — each action produces a different visual and tactile result. Name the colours as you go: red cloth, blue cloth. Simple, free, genuinely engaging.</p>
+        <span class="play-tag">Sensory · Colour vocabulary · Peekaboo</span>
+      </div>
+    </div>
+    <div class="play-item">
+      <span class="play-item-icon">🔷</span>
+      <div>
+        <h4>4-in-1 Sorting Box</h4>
+        <p>Four activities in one: shape sorting, ball drop, peg insertion, ring ramp. Start with ball drop — immediately accessible and deeply satisfying. Shape sorting next. Don't introduce all four at once.</p>
+        <span class="play-tag">Shape sorting · Fine motor</span>
+      </div>
+    </div>
+    <div class="play-item">
+      <span class="play-item-icon">🥚</span>
+      <div>
+        <h4>Egg Toys</h4>
+        <p>He's still working on fitting the two halves together. The trial and error persistence is the developmental work — not the result. Let him struggle productively. Only help if he's genuinely frustrated, not just working hard.</p>
+        <span class="play-tag">Spatial reasoning · Persistence</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GROSS MOTOR -->
+<section class="fade-in">
+  <div class="section-tag">Gross motor</div>
+  <h2 class="section-title">Moving his<br>whole body</h2>
+  <div class="play-items">
+    <div class="play-item">
+      <span class="play-item-icon">🪨</span>
+      <div>
+        <h4>Stapelstein Balance Stones</h4>
+        <p>Brand new this month — a rainbow set with a balance board. At 13 months: place one stone flat on the floor, hold his hands, let him step on and off. The curved surface is wobbly and completely new for his feet and balance system. Don't stack them yet. One stone, stepping on and off, is the whole activity. Gradually reduce how much you hold his hands over the coming weeks. The balance board comes later — once he's confident on a single stone.</p>
+        <span class="play-tag">Balance · Proprioception · Body confidence</span>
+      </div>
+    </div>
+    <div class="play-item">
+      <span class="play-item-icon">🪜</span>
+      <div>
+        <h4>Stairs — Daily</h4>
+        <p>He already climbs stairs every day and loves it. Keep this going — it's one of the best gross motor activities available to him right now. Up is his strength. Work on coming down too: facing the stairs, one knee at a time. Stay close, let him do the work. Vary the stairs where possible — building stairs, park stairs, outdoor steps all feel different underfoot.</p>
+        <span class="play-tag">Leg strength · Bilateral coordination · Confidence</span>
+      </div>
+    </div>
+    <div class="play-item">
+      <span class="play-item-icon">🔺</span>
+      <div>
+        <h4>Pikler Triangle</h4>
+        <p>The Pikler is one of the most underrated gross motor tools at this age — it builds upper body strength, risk assessment, and the specific confidence that comes from navigating height independently. To make it irresistible: drape a coloured cloth over one side to create a den underneath (he'll want to crawl in). Place a favourite farm animal at the top rung as a target to reach. Sit on the other side and play peekaboo through the rungs. The climbing is the activity — the play around it is the invitation.</p>
+        <span class="play-tag">Climbing · Risk assessment · Upper body strength</span>
+      </div>
+    </div>
+    <div class="play-item">
+      <span class="play-item-icon">🚲</span>
+      <div>
+        <h4>Bike Rides</h4>
+        <p>This is one of the richest developmental activities available — and it looks like just a ride. Research on vestibular development shows that passive movement through varied environments activates the balance system, spatial reasoning, and depth perception simultaneously. His brain is processing the moving world, the wind, the sounds, the changing terrain — all at once. Aim for 20–30 minutes with a destination that has a sensory reward: sandpit, water feature, open grass to crawl on. Narrate what you pass: "big tree, red bus, hear the birds." The destination matters as much as the journey.</p>
+        <span class="play-tag">Vestibular · Visual-spatial · Outdoor · Language</span>
+      </div>
+    </div>
+    <div class="play-item">
+      <span class="play-item-icon">🏊</span>
+      <div>
+        <h4>Weekly Swimming</h4>
+        <p>The most time-sensitive physical activity of this entire year. Research shows that children have a natural openness to water confidence between 12–18 months — before fear of water is learned and before the dive reflex diminishes. Every week in the pool during this window is building something that becomes significantly harder to develop after 18 months. In lessons this month: back float practice, intentional submersion with a cue word before each dip, and wall grab. No float jackets — these teach the wrong body position and build false confidence without real skill. Parent in the water, hands supporting horizontally, fading support gradually session by session. Goal by end of June: comfortable face in water and a back float with light support.</p>
+        <span class="play-tag">Water confidence · Bilateral coordination · Breath control · Time-sensitive</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MATHS -->
+<div class="maths-section fade-in">
+  <div class="maths-inner">
+    <div class="section-tag">Early maths</div>
+    <h2 class="section-title">How maths sounds<br>in June</h2>
+
+    <div class="maths-concepts">
+      <div class="maths-concept">
+        <div class="concept-pair">Big / Small</div>
+        <div class="concept-example">"Big cow, small chick"</div>
+      </div>
+      <div class="maths-concept">
+        <div class="concept-pair">More / Less</div>
+        <div class="concept-example">"More rice in the bowl"</div>
+      </div>
+      <div class="maths-concept">
+        <div class="concept-pair">In / Out</div>
+        <div class="concept-example">"Pig goes in the mud"</div>
+      </div>
+      <div class="maths-concept">
+        <div class="concept-pair">Full / Empty</div>
+        <div class="concept-example">"Cup is full. All gone."</div>
+      </div>
+      <div class="maths-concept">
+        <div class="concept-pair">Heavy / Light</div>
+        <div class="concept-example">"Heavy stone, light feather"</div>
+      </div>
+      <div class="maths-concept">
+        <div class="concept-pair">Wet / Dry</div>
+        <div class="concept-example">"Wet mud, dry rice"</div>
+      </div>
+    </div>
+
+    <div class="maths-tip">
+      <h4>The commentator rule</h4>
+      <p>Don't create special maths time. Just narrate what's already happening with precise words. When he fills the bowl with rice — "full bowl." When he dumps it — "all gone, empty." When he picks up the big cow — "big cow." The maths is already everywhere. Your words are the only thing to add.</p>
+    </div>
+  </div>
+</div>
+
+<!-- RESOURCES -->
+<section class="fade-in">
+  <div class="section-tag">What we have</div>
+  <h2 class="section-title">Resources at home<br>for June</h2>
+  <div class="resources-grid">
+    <div class="resource-category">
+      <h4>🐄 Farm Animals</h4>
+      <ul class="resource-list">
+        <li>Mideer farm animal figurines</li>
+        <li>Farm hide & seek puzzle</li>
+        <li>Priddy First 100 Words book</li>
+        <li>Multiple farm animal books</li>
+      </ul>
+    </div>
+    <div class="resource-category">
+      <h4>🎨 Art</h4>
+      <ul class="resource-list">
+        <li>Honeysticks super jumbo crayons</li>
+        <li>IKEA coloured paper (A3 + A4)</li>
+        <li>Finger paints</li>
+        <li>Magnetic wall decal</li>
+      </ul>
+    </div>
+    <div class="resource-category">
+      <h4>🌿 Sensory</h4>
+      <ul class="resource-list">
+        <li>Cornstarch + cocoa (oobleck/mud)</li>
+        <li>White sensory tray</li>
+        <li>Snoqualmie stones</li>
+        <li>Dry rice / oats</li>
+        <li>Full fat cow's milk + frother</li>
+        <li>Sheer coloured cloths (5–7 colours)</li>
+      </ul>
+    </div>
+    <div class="resource-category">
+      <h4>🧱 Fine Motor & Play</h4>
+      <ul class="resource-list">
+        <li>Woodland Blockables</li>
+        <li>4-in-1 sorting box (DoubleYX)</li>
+        <li>Egg toys</li>
+        <li>Ring stacker</li>
+        <li>Tool set (nuts & bolts)</li>
+        <li>Farm hide & seek puzzle</li>
+      </ul>
+    </div>
+    <div class="resource-category">
+      <h4>🎵 Music</h4>
+      <ul class="resource-list">
+        <li>Xylophone (favourite this week)</li>
+        <li>Musical rattles</li>
+        <li>Small instruments basket</li>
+        <li>Grandma's nursery rhymes</li>
+      </ul>
+    </div>
+    <div class="resource-category">
+      <h4>🪨 Gross Motor</h4>
+      <ul class="resource-list">
+        <li>Stapelstein rainbow set + balance board</li>
+        <li>Balance bike (flat path)</li>
+        <li>Building stairs daily</li>
+        <li>Barefoot on grass</li>
+      </ul>
+    </div>
+    <div class="resource-category full">
+      <h4>💡 Free activities using kitchen items</h4>
+      <ul class="resource-list" style="display:grid; grid-template-columns:1fr 1fr; gap:6px 24px;">
+        <li>Pasta transfer between two bowls</li>
+        <li>Water pouring between cups</li>
+        <li>Ice cube transfer (cold + slippery)</li>
+        <li>Tupperware lids to open and close</li>
+        <li>Sock balls into a laundry basket</li>
+        <li>Pom poms through colander holes</li>
+        <li>Stone sorting big vs small</li>
+        <li>Spice jar shaking (sealed with rice)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- GOLDEN RULE -->
+<div class="golden-rule">
+  <p>"The goal isn't to <strong>teach</strong> him. It's to be <strong>curious alongside him</strong> — and let him lead."</p>
+</div>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
