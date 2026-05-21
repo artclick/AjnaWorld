@@ -168,9 +168,9 @@
 
   /* WHAT HE NEEDS */
   .needs-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
     margin-bottom: 32px;
   }
 
@@ -178,32 +178,23 @@
     background: var(--deep);
     color: var(--cream);
     border-radius: 20px;
-    padding: 28px 24px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .need-card::before {
-    content: attr(data-emoji);
-    position: absolute;
-    top: -8px;
-    right: -4px;
-    font-size: 64px;
-    opacity: 0.12;
-    line-height: 1;
+    padding: 24px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
   }
 
   .need-card .need-emoji {
     font-size: 28px;
-    margin-bottom: 12px;
-    display: block;
+    flex-shrink: 0;
+    margin-top: 2px;
   }
 
   .need-card h3 {
     font-family: 'Playfair Display', serif;
-    font-size: 18px;
+    font-size: 17px;
     font-weight: 600;
-    margin-bottom: 8px;
+    margin-bottom: 4px;
     color: var(--gold);
   }
 
@@ -216,10 +207,6 @@
 
   .need-card.highlight {
     background: var(--rust);
-    grid-column: span 2;
-    display: flex;
-    gap: 20px;
-    align-items: center;
   }
 
   .need-card.highlight h3 { color: var(--cream); }
