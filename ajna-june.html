@@ -662,14 +662,58 @@
   }
 
   @media (max-width: 480px) {
+    /* needs grid */
     .needs-grid { grid-template-columns: 1fr; }
     .need-card.highlight { flex-direction: column; }
+
+    /* animals */
     .animals-grid { grid-template-columns: repeat(2, 1fr); }
+
+    /* art */
     .art-cards { grid-template-columns: 1fr; }
     .art-card.primary { grid-column: span 1; }
+
+    /* maths */
     .maths-concepts { grid-template-columns: 1fr; }
+
+    /* resources */
     .resources-grid { grid-template-columns: 1fr; }
     .resource-category.full { grid-column: span 1; }
+    .resource-category.full .resource-list { grid-template-columns: 1fr !important; }
+
+    /* play items — stack icon and text on small screens */
+    .play-item { flex-direction: column; gap: 10px; }
+    .play-item-icon { font-size: 28px; }
+
+    /* sensory cards */
+    .sensory-card { flex-direction: column; gap: 8px; }
+    .sensory-num { font-size: 28px; width: auto; }
+
+    /* montessori items */
+    .montessori-item { flex-direction: column; gap: 8px; }
+
+    /* wall list */
+    .wall-list li { font-size: 12px; }
+
+    /* gross motor play items */
+    .gross-item { flex-direction: column; gap: 10px; }
+
+    /* section titles */
+    .section-title { font-size: 28px; }
+
+    /* hero pills wrap tidily */
+    .hero-pills { gap: 8px; }
+    .pill { font-size: 11px; padding: 6px 12px; }
+
+    /* maths tip */
+    .maths-tip { padding: 20px; }
+
+    /* farm section inner padding */
+    .farm-inner { padding: 0 16px; }
+    .maths-inner { padding: 0 16px; }
+
+    /* resource full grid fix */
+    ul.resource-list[style] { display: flex !important; flex-direction: column !important; }
   }
 </style>
 </head>
