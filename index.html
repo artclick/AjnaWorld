@@ -3,453 +3,188 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ajna's World</title>
+<title>Sprout</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --cream: #FAF6EF;
-    --warm: #F5EDD8;
-    --earth: #C4956A;
-    --deep: #3D2B1F;
-    --green: #7A9E7E;
-    --sage: #B5C9B7;
-    --rust: #C4622D;
-    --gold: #D4A853;
-    --light-rust: #F2E4D8;
+    --birch: #F4EFE6;
+    --bark: #1A1208;
+    --forest: #152910;
+    --forest-mid: #1F3D1C;
+    --forest-light: #2E5429;
+    --canopy: #3D6B38;
+    --sage: #6B8F67;
+    --sage-light: #A8BFA5;
+    --mushroom: #B89468;
+    --mushroom-light: #E3D4BC;
+    --dapple: #C8992A;
+    --dapple-light: #E8C060;
+    --berry: #5C2218;
+    --fern: #3A5437;
+    --morning: #EDF0E8;
+    --parchment: #F7F2E8;
   }
-
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    background: var(--cream);
-    font-family: 'DM Sans', sans-serif;
-    color: var(--deep);
-    overflow-x: hidden;
-  }
+  body { background: var(--parchment); font-family: 'DM Sans', sans-serif; color: var(--bark); overflow-x: hidden; }
 
   /* HERO */
   .hero {
     min-height: 100vh;
-    background: var(--deep);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 80px 24px;
-    position: relative;
-    overflow: hidden;
+    background: var(--forest);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; padding: 80px 24px 120px; position: relative; overflow: hidden;
   }
-
   .hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
+    content: ''; position: absolute; inset: 0;
     background:
-      radial-gradient(ellipse at 20% 60%, rgba(196,149,106,0.12) 0%, transparent 55%),
-      radial-gradient(ellipse at 80% 20%, rgba(122,158,126,0.1) 0%, transparent 50%),
-      radial-gradient(ellipse at 50% 90%, rgba(212,168,83,0.08) 0%, transparent 40%);
+      radial-gradient(ellipse at 12% 15%, rgba(200,153,42,0.22) 0%, transparent 38%),
+      radial-gradient(ellipse at 82% 8%, rgba(200,153,42,0.14) 0%, transparent 32%),
+      radial-gradient(ellipse at 55% 0%, rgba(200,153,42,0.09) 0%, transparent 45%),
+      radial-gradient(ellipse at 95% 55%, rgba(46,84,41,0.5) 0%, transparent 40%),
+      radial-gradient(ellipse at 5% 85%, rgba(21,41,16,0.7) 0%, transparent 45%),
+      radial-gradient(ellipse at 50% 100%, rgba(21,41,16,0.8) 0%, transparent 50%);
   }
-
-  .hero-eyebrow {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--earth);
-    margin-bottom: 32px;
-    position: relative;
-  }
-
-  .hero-name {
+  .hero-title {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(72px, 18vw, 160px);
+    font-size: clamp(96px, 22vw, 200px);
     font-weight: 700;
-    color: var(--cream);
+    font-style: italic;
+    color: var(--birch);
     line-height: 0.85;
-    letter-spacing: -2px;
-    margin-bottom: 12px;
-    position: relative;
+    letter-spacing: -4px;
+    margin-bottom: 32px;
+    position: relative; z-index: 1;
   }
-
-  .hero-world {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(28px, 7vw, 64px);
-    font-weight: 400;
-    font-style: italic;
-    color: var(--gold);
-    margin-bottom: 40px;
-    position: relative;
+  .hero-title span { color: var(--dapple); }
+  .hero-age-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(200,153,42,0.15); border: 1px solid rgba(200,153,42,0.3);
+    border-radius: 99px; padding: 7px 18px;
+    font-size: 11px; font-weight: 500; letter-spacing: 0.12em;
+    color: var(--dapple-light); margin-bottom: 28px; position: relative; z-index: 1;
   }
-
   .hero-desc {
-    font-size: 15px;
-    font-weight: 300;
-    color: rgba(250,246,239,0.5);
-    max-width: 380px;
-    line-height: 1.7;
-    margin-bottom: 56px;
-    position: relative;
+    font-size: 15px; font-weight: 300; color: rgba(244,239,230,0.5);
+    max-width: 400px; line-height: 1.75; margin-bottom: 56px;
+    position: relative; z-index: 1;
   }
+  .hero-stats { display: flex; gap: 48px; justify-content: center; position: relative; z-index: 1; }
+  .stat { text-align: center; }
+  .stat-number { font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 600; color: var(--birch); line-height: 1; margin-bottom: 4px; }
+  .stat-label { font-size: 10px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(244,239,230,0.28); }
+  .stat-divider { width: 1px; background: rgba(255,255,255,0.1); }
+  .scroll-hint { position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; color: rgba(255,255,255,0.18); font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase; z-index: 1; }
+  .scroll-line { width: 1px; height: 48px; background: linear-gradient(to bottom, rgba(200,153,42,0.5), transparent); animation: pulse 2.5s ease-in-out infinite; }
+  @keyframes pulse { 0%,100%{opacity:.3}50%{opacity:1} }
 
-  .hero-stats {
-    display: flex;
-    gap: 48px;
-    justify-content: center;
-    position: relative;
-  }
+  /* SHARED SECTION STYLES */
+  .section-tag { font-size: 10px; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase; color: var(--canopy); margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
+  .section-tag::after { content: ''; flex: 1; height: 1px; background: var(--canopy); opacity: 0.25; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: clamp(28px,5vw,46px); font-weight: 400; line-height: 1.15; margin-bottom: 16px; color: var(--bark); }
+  .section-intro { font-size: 14px; font-weight: 300; color: rgba(26,18,8,0.55); line-height: 1.75; max-width: 620px; margin-bottom: 48px; }
 
-  .stat {
-    text-align: center;
-  }
+  /* HOW IT WORKS */
+  .how-section { padding: 80px 24px; max-width: 900px; margin: 0 auto; }
+  .how-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-bottom: 24px; }
+  .how-card { background: var(--morning); border-radius: 20px; padding: 28px 24px; border-left: 3px solid var(--canopy); position: relative; overflow: hidden; }
+  .how-card::before { content: attr(data-num); position: absolute; top: -10px; right: 12px; font-family: 'Playfair Display', serif; font-size: 80px; font-weight: 700; color: var(--canopy); opacity: 0.06; line-height: 1; }
+  .how-icon { font-size: 28px; margin-bottom: 14px; display: block; }
+  .how-card h4 { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 600; color: var(--forest-mid); margin-bottom: 8px; }
+  .how-card p { font-size: 12px; color: rgba(26,18,8,0.6); line-height: 1.65; font-weight: 300; }
+  .how-note { background: var(--forest-mid); color: var(--birch); border-radius: 16px; padding: 24px 28px; display: flex; gap: 16px; align-items: flex-start; }
+  .how-note-icon { font-size: 24px; flex-shrink: 0; margin-top: 2px; }
+  .how-note h4 { font-family: 'Playfair Display', serif; font-size: 16px; color: var(--dapple-light); margin-bottom: 6px; }
+  .how-note p { font-size: 13px; color: rgba(244,239,230,0.65); line-height: 1.65; font-weight: 300; }
 
-  .stat-number {
-    font-family: 'Playfair Display', serif;
-    font-size: 36px;
-    font-weight: 600;
-    color: var(--cream);
-    line-height: 1;
-    margin-bottom: 4px;
-  }
+  /* MILESTONE TIMELINE */
+  .milestone-section { background: var(--forest-mid); padding: 80px 24px; overflow: hidden; }
+  .milestone-inner { max-width: 900px; margin: 0 auto; }
+  .milestone-section .section-tag { color: var(--dapple); }
+  .milestone-section .section-tag::after { background: var(--dapple); opacity: 0.25; }
+  .milestone-section .section-title { color: var(--birch); }
+  .milestone-section .section-intro { color: rgba(244,239,230,0.5); }
 
-  .stat-label {
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: rgba(250,246,239,0.35);
-  }
-
-  .stat-divider {
-    width: 1px;
-    background: rgba(255,255,255,0.1);
-  }
-
-  .scroll-hint {
-    position: absolute;
-    bottom: 32px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    color: rgba(255,255,255,0.25);
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-  }
-
-  .scroll-line {
-    width: 1px;
-    height: 48px;
-    background: linear-gradient(to bottom, rgba(255,255,255,0.25), transparent);
-    animation: pulse 2s ease-in-out infinite;
-  }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 0.3; }
-    50% { opacity: 1; }
-  }
-
-  /* PHILOSOPHY STRIP */
-  .philosophy {
-    background: var(--gold);
-    padding: 28px 24px;
-    overflow: hidden;
-  }
-
-  .philosophy-inner {
-    display: flex;
-    gap: 48px;
-    animation: marquee 20s linear infinite;
-    white-space: nowrap;
-  }
-
-  .philosophy-item {
-    font-family: 'Playfair Display', serif;
-    font-size: 15px;
-    font-style: italic;
-    color: var(--deep);
-    opacity: 0.7;
-    flex-shrink: 0;
-  }
-
-  .philosophy-dot {
-    color: var(--deep);
-    opacity: 0.3;
-    flex-shrink: 0;
-    font-size: 20px;
-    line-height: 1.2;
-  }
-
-  @keyframes marquee {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
-
-  /* MONTHS GRID */
-  .months-section {
-    padding: 80px 24px;
-    max-width: 900px;
-    margin: 0 auto;
-  }
-
-  .section-tag {
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--earth);
-    margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .section-tag::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--earth);
-    opacity: 0.3;
-  }
-
-  .section-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(32px, 6vw, 52px);
-    font-weight: 400;
-    line-height: 1.1;
-    margin-bottom: 48px;
-  }
-
-  .months-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-  }
-
-  .month-card {
-    border-radius: 20px;
-    padding: 28px 24px;
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-    cursor: default;
-    min-height: 200px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-
-  .month-card.active {
-    cursor: pointer;
-    background: var(--deep);
-    color: var(--cream);
-  }
-
-  .month-card.active:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 20px 60px rgba(61,43,31,0.2);
-  }
-
-  .month-card.active.featured {
-    grid-column: span 2;
-    background: var(--rust);
-  }
-
-  .month-card.coming {
-    background: var(--warm);
-    color: var(--deep);
-    opacity: 0.7;
-  }
-
-  .month-card::before {
-    content: attr(data-emoji);
-    position: absolute;
-    right: -8px;
-    top: -8px;
-    font-size: 80px;
-    opacity: 0.12;
-    line-height: 1;
-    pointer-events: none;
-  }
-
-  .month-card.active.featured::before {
-    font-size: 120px;
-    opacity: 0.15;
-  }
-
-  .card-top {}
-
-  .card-month {
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    margin-bottom: 8px;
-    opacity: 0.6;
-  }
-
-  .card-theme {
-    font-family: 'Playfair Display', serif;
-    font-size: 22px;
-    font-weight: 600;
-    line-height: 1.2;
-    margin-bottom: 8px;
-  }
-
-  .month-card.active.featured .card-theme {
-    font-size: 32px;
-  }
-
-  .card-age {
+  .milestone-disclaimer {
+    background: rgba(200,153,42,0.12);
+    border: 1px solid rgba(200,153,42,0.2);
+    border-radius: 12px;
+    padding: 14px 18px;
     font-size: 12px;
+    color: rgba(244,239,230,0.6);
     font-weight: 300;
-    opacity: 0.6;
-    margin-bottom: 16px;
-  }
-
-  .card-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
-
-  .card-tag {
-    font-size: 10px;
-    padding: 3px 10px;
-    border-radius: 99px;
-    font-weight: 500;
-  }
-
-  .month-card.active .card-tag {
-    background: rgba(255,255,255,0.15);
-    color: rgba(255,255,255,0.8);
-  }
-
-  .month-card.coming .card-tag {
-    background: rgba(61,43,31,0.08);
-    color: rgba(61,43,31,0.5);
-  }
-
-  .card-bottom {
-    margin-top: 20px;
-  }
-
-  .card-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 0.05em;
-    text-decoration: none;
-    color: var(--gold);
-    transition: gap 0.2s;
-  }
-
-  .month-card.active:hover .card-cta { gap: 12px; }
-
-  .card-cta-arrow {
-    font-size: 16px;
-    transition: transform 0.2s;
-  }
-
-  .month-card.active:hover .card-cta-arrow { transform: translateX(4px); }
-
-  .coming-label {
-    font-size: 11px;
-    color: rgba(61,43,31,0.35);
-    font-style: italic;
-    font-weight: 300;
-  }
-
-  /* PRINCIPLES */
-  .principles-section {
-    background: var(--deep);
-    padding: 80px 24px;
-  }
-
-  .principles-inner {
-    max-width: 900px;
-    margin: 0 auto;
-  }
-
-  .principles-section .section-tag { color: var(--gold); }
-  .principles-section .section-tag::after { background: var(--gold); opacity: 0.3; }
-  .principles-section .section-title { color: var(--cream); }
-
-  .principles-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-  }
-
-  .principle {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 16px;
-    padding: 24px;
-  }
-
-  .principle-icon { font-size: 28px; margin-bottom: 12px; display: block; }
-
-  .principle h4 {
-    font-family: 'Playfair Display', serif;
-    font-size: 16px;
-    color: var(--gold);
-    margin-bottom: 8px;
-  }
-
-  .principle p {
-    font-size: 12px;
-    color: rgba(250,246,239,0.55);
     line-height: 1.6;
-    font-weight: 300;
+    margin-bottom: 32px;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
   }
+  .milestone-disclaimer-icon { font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+
+  .milestone-scroll { overflow-x: auto; padding-bottom: 16px; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .milestone-scroll::-webkit-scrollbar { display: none; }
+  .milestone-track { display: flex; gap: 0; min-width: max-content; position: relative; padding-top: 20px; }
+  .milestone-track::before { content: ''; position: absolute; top: 36px; left: 60px; right: 60px; height: 2px; background: linear-gradient(to right, transparent, rgba(200,153,42,0.3), var(--dapple), rgba(200,153,42,0.3), transparent); }
+
+  .milestone-month { display: flex; flex-direction: column; align-items: center; width: 148px; flex-shrink: 0; position: relative; }
+  .milestone-dot { width: 34px; height: 34px; border-radius: 50%; background: var(--forest); border: 2px solid var(--canopy); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600; color: var(--sage-light); font-family: 'Playfair Display', serif; margin-bottom: 16px; z-index: 1; position: relative; transition: all 0.2s; flex-shrink: 0; }
+  .milestone-month.active .milestone-dot { background: var(--dapple); border-color: var(--dapple); color: var(--bark); width: 42px; height: 42px; font-size: 14px; margin-bottom: 12px; }
+  .milestone-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 14px 12px; width: 128px; text-align: left; }
+  .milestone-month.active .milestone-card { background: rgba(200,153,42,0.12); border-color: rgba(200,153,42,0.25); }
+  .milestone-age { font-size: 9px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--dapple); margin-bottom: 8px; }
+  .milestone-items { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+  .milestone-item { display: flex; align-items: flex-start; gap: 6px; font-size: 10px; color: rgba(244,239,230,0.65); line-height: 1.4; font-weight: 300; }
+  .milestone-item-icon { font-size: 11px; flex-shrink: 0; margin-top: 1px; }
+  .milestone-hint { text-align: center; margin-top: 20px; font-size: 10px; color: rgba(244,239,230,0.22); letter-spacing: 0.1em; font-style: italic; }
+
+  /* MONTHS */
+  .months-section { padding: 80px 24px; max-width: 900px; margin: 0 auto; }
+  .months-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+  .month-card { border-radius: 20px; padding: 28px 24px; position: relative; overflow: hidden; transition: transform 0.25s ease, box-shadow 0.25s ease; cursor: default; min-height: 210px; display: flex; flex-direction: column; justify-content: space-between; }
+  .month-card.active { cursor: pointer; background: var(--forest-mid); color: var(--birch); }
+  .month-card.active:hover { transform: translateY(-4px); box-shadow: 0 24px 64px rgba(21,41,16,0.35); }
+  .month-card.active.featured { grid-column: span 2; background: var(--berry); }
+  .month-card.coming { background: var(--mushroom-light); color: var(--bark); opacity: 0.75; }
+  .month-card::before { content: attr(data-emoji); position: absolute; right: -8px; top: -8px; font-size: 80px; opacity: 0.1; line-height: 1; pointer-events: none; }
+  .month-card.active.featured::before { font-size: 120px; opacity: 0.11; }
+  .card-month { font-size: 10px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 8px; opacity: 0.55; }
+  .card-theme { font-family: 'Playfair Display', serif; font-size: 21px; font-weight: 600; line-height: 1.2; margin-bottom: 8px; }
+  .month-card.active.featured .card-theme { font-size: 30px; }
+  .card-age { font-size: 11px; font-weight: 300; opacity: 0.55; margin-bottom: 16px; }
+  .card-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .card-tag { font-size: 10px; padding: 3px 10px; border-radius: 99px; font-weight: 500; }
+  .month-card.active .card-tag { background: rgba(255,255,255,0.13); color: rgba(244,239,230,0.8); }
+  .month-card.coming .card-tag { background: rgba(26,18,8,0.07); color: rgba(26,18,8,0.4); }
+  .card-bottom { margin-top: 20px; }
+  .card-cta { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 500; letter-spacing: 0.05em; text-decoration: none; color: var(--dapple-light); transition: gap 0.2s; }
+  .month-card.active:hover .card-cta { gap: 12px; }
+  .month-card.active:hover .card-cta-arrow { transform: translateX(4px); }
+  .card-cta-arrow { font-size: 16px; transition: transform 0.2s; }
+  .coming-label { font-size: 11px; color: rgba(26,18,8,0.28); font-style: italic; font-weight: 300; }
+
+  /* QUOTE */
+  .quote-strip { background: var(--morning); padding: 72px 24px; text-align: center; }
+  .quote-inner { max-width: 580px; margin: 0 auto; }
+  .quote-leaf { font-size: 28px; margin-bottom: 20px; display: block; }
+  .quote-text { font-family: 'Playfair Display', serif; font-size: clamp(18px,3.5vw,26px); font-weight: 400; font-style: italic; color: var(--forest-mid); line-height: 1.55; margin-bottom: 16px; }
+  .quote-sub { font-size: 12px; color: rgba(26,18,8,0.4); font-weight: 300; line-height: 1.75; max-width: 440px; margin: 0 auto; }
 
   /* FOOTER */
-  .footer {
-    background: var(--cream);
-    padding: 48px 24px;
-    text-align: center;
-    border-top: 1px solid rgba(61,43,31,0.08);
-  }
+  .footer { background: var(--forest); padding: 56px 24px; text-align: center; position: relative; overflow: hidden; }
+  .footer::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(200,153,42,0.08) 0%, transparent 60%); }
+  .footer-title { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 700; font-style: italic; color: var(--dapple); margin-bottom: 8px; position: relative; z-index: 1; }
+  .footer-sub { font-size: 11px; color: rgba(244,239,230,0.22); letter-spacing: 0.14em; font-weight: 300; position: relative; z-index: 1; }
 
-  .footer-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 28px;
-    font-weight: 400;
-    font-style: italic;
-    color: var(--earth);
-    margin-bottom: 8px;
-  }
-
-  .footer-sub {
-    font-size: 12px;
-    color: rgba(61,43,31,0.4);
-    letter-spacing: 0.1em;
-    font-weight: 300;
-  }
-
-  /* FADE IN */
-  .fade-in {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-  }
-
+  /* FADE */
+  .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
   .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-  @media (max-width: 600px) {
+  @media (max-width: 640px) {
     .hero-stats { gap: 24px; }
+    .how-grid { grid-template-columns: 1fr; }
     .months-grid { grid-template-columns: 1fr 1fr; }
     .month-card.active.featured { grid-column: span 2; }
-    .principles-grid { grid-template-columns: 1fr; }
   }
-
-  @media (max-width: 400px) {
+  @media (max-width: 420px) {
     .months-grid { grid-template-columns: 1fr; }
     .month-card.active.featured { grid-column: span 1; }
   }
@@ -459,78 +194,168 @@
 
 <!-- HERO -->
 <div class="hero">
-  <div class="hero-eyebrow">Welcome to</div>
-  <h1 class="hero-name">Ajna's</h1>
-  <p class="hero-world">world</p>
-  <p class="hero-desc">A month-by-month guide for every caregiver — ideas for play, learning, and following his lead.</p>
+  <h1 class="hero-title"><span>Sprout</span></h1>
+  <div class="hero-age-badge">🌱 Ages 12 – 24 months</div>
+  <p class="hero-desc">A month-by-month guide for every caregiver — ideas for play, learning, and following their lead.</p>
   <div class="hero-stats">
-    <div class="stat">
-      <div class="stat-number">12</div>
-      <div class="stat-label">Months</div>
-    </div>
+    <div class="stat"><div class="stat-number">12</div><div class="stat-label">Months</div></div>
     <div class="stat-divider"></div>
-    <div class="stat">
-      <div class="stat-number">12</div>
-      <div class="stat-label">Themes</div>
-    </div>
+    <div class="stat"><div class="stat-number">12</div><div class="stat-label">Themes</div></div>
     <div class="stat-divider"></div>
-    <div class="stat">
-      <div class="stat-number">1</div>
-      <div class="stat-label">Little boy</div>
+    <div class="stat"><div class="stat-number">∞</div><div class="stat-label">Wonder</div></div>
+  </div>
+  <div class="scroll-hint"><div class="scroll-line"></div>explore</div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="how-section fade-in">
+  <div class="section-tag">How it works</div>
+  <h2 class="section-title">Not a curriculum.<br>A lens.</h2>
+  <p class="section-intro">This guide grew out of a simple observation: children learn best when they are the ones leading. Not through worksheets or structured lessons, but through play — messy, repetitive, joyful, self-directed play. Sensory exploration becomes early maths. A figurine becomes a vocabulary lesson. A walk outside becomes a geography of wonder. Independence is built through doing real things. Creativity through open-ended materials. Language through narration, not instruction. Nature as the richest classroom there is.</p>
+  <div class="how-grid">
+    <div class="how-card" data-num="1">
+      <span class="how-icon">🎯</span>
+      <h4>One theme, many layers</h4>
+      <p>Each month weaves one theme through language, sensory play, art, movement, and early maths. A farm animal isn't just a vocabulary word — it's a sensory bin, a puzzle, a song, a counting activity.</p>
+    </div>
+    <div class="how-card" data-num="2">
+      <span class="how-icon">👁️</span>
+      <h4>Observe before directing</h4>
+      <p>The most important role a caregiver plays is observer. Watch what your child gravitates toward. That's the real curriculum — built fresh every day from their own interests.</p>
+    </div>
+    <div class="how-card" data-num="3">
+      <span class="how-icon">🔄</span>
+      <h4>Rotate, don't overwhelm</h4>
+      <p>3–4 toys and one intentional activity per week. Too much choice creates grazing. Fewer options held longer creates depth. Boredom with a familiar toy is often the moment before a breakthrough.</p>
     </div>
   </div>
-  <div class="scroll-hint">
-    <div class="scroll-line"></div>
-    explore
+  <div class="how-note">
+    <span class="how-note-icon">🌿</span>
+    <div>
+      <h4>The months are rough guidance</h4>
+      <p>Each guide is written for a specific age range, but every child develops at their own pace. Dip into earlier months for simpler foundations, or explore ahead if your child is ready. If a theme from two months away is sparking their interest today — follow it. There is no wrong place to start.</p>
+    </div>
   </div>
 </div>
 
-<!-- PHILOSOPHY MARQUEE -->
-<div class="philosophy">
-  <div class="philosophy-inner">
-    <span class="philosophy-item">Follow his curiosity</span>
-    <span class="philosophy-dot">·</span>
-    <span class="philosophy-item">Name what he touches</span>
-    <span class="philosophy-dot">·</span>
-    <span class="philosophy-item">Let him lead</span>
-    <span class="philosophy-dot">·</span>
-    <span class="philosophy-item">Short sessions, deep engagement</span>
-    <span class="philosophy-dot">·</span>
-    <span class="philosophy-item">Mess is progress 🎨</span>
-    <span class="philosophy-dot">·</span>
-    <span class="philosophy-item">5 minutes is enough</span>
-    <span class="philosophy-dot">·</span>
-    <span class="philosophy-item">Repetition = learning 🔁</span>
-    <span class="philosophy-dot">·</span>
-    <span class="philosophy-item">He already knows more than you think</span>
-    <span class="philosophy-dot">·</span>
-    <span class="philosophy-item">Follow his curiosity</span>
-    <span class="philosophy-dot">·</span>
-    <span class="philosophy-item">Name what he touches</span>
-    <span class="philosophy-dot">·</span>
-    <span class="philosophy-item">Let him lead</span>
-    <span class="philosophy-dot">·</span>
-    <span class="philosophy-item">Short sessions, deep engagement</span>
-    <span class="philosophy-dot">·</span>
-    <span class="philosophy-item">Mess is progress 🎨</span>
-    <span class="philosophy-dot">·</span>
-    <span class="philosophy-item">5 minutes is enough</span>
-    <span class="philosophy-dot">·</span>
-    <span class="philosophy-item">Repetition = learning 🔁</span>
-    <span class="philosophy-dot">·</span>
-    <span class="philosophy-item">He already knows more than you think</span>
-    <span class="philosophy-dot">·</span>
+<!-- MILESTONE TIMELINE -->
+<div class="milestone-section fade-in">
+  <div class="milestone-inner">
+    <div class="section-tag">Development map</div>
+    <h2 class="section-title">What's emerging<br>month by month</h2>
+    <p class="section-intro">A compass, not a checklist. Use this to understand the why behind each month's activities.</p>
+
+    <div class="milestone-disclaimer">
+      <span class="milestone-disclaimer-icon">🍃</span>
+      <span>Milestones are shown at the midpoint of typical ranges. Most skills emerge across a 2–4 month window — earlier or later is usually normal. If you have concerns about your child's development, speak with your paediatrician.</span>
+    </div>
+
+    <div class="milestone-scroll">
+      <div class="milestone-track">
+
+        <div class="milestone-month active">
+          <div class="milestone-dot">12m</div>
+          <div class="milestone-card">
+            <div class="milestone-age">12 months</div>
+            <ul class="milestone-items">
+              <li class="milestone-item"><span class="milestone-item-icon">🗣️</span>Says 1–2 words besides mama/dada</li>
+              <li class="milestone-item"><span class="milestone-item-icon">👆</span>Points at things of interest</li>
+              <li class="milestone-item"><span class="milestone-item-icon">👋</span>Waves bye-bye</li>
+              <li class="milestone-item"><span class="milestone-item-icon">🚶</span>Cruises along furniture</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="milestone-month">
+          <div class="milestone-dot">15m</div>
+          <div class="milestone-card">
+            <div class="milestone-age">15 months</div>
+            <ul class="milestone-items">
+              <li class="milestone-item"><span class="milestone-item-icon">🚶</span>Walks independently</li>
+              <li class="milestone-item"><span class="milestone-item-icon">🗣️</span>Says 3+ words</li>
+              <li class="milestone-item"><span class="milestone-item-icon">👆</span>Points to ask for things</li>
+              <li class="milestone-item"><span class="milestone-item-icon">🤝</span>Copies simple adult actions</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="milestone-month">
+          <div class="milestone-dot">17m</div>
+          <div class="milestone-card">
+            <div class="milestone-age">17 months</div>
+            <ul class="milestone-items">
+              <li class="milestone-item"><span class="milestone-item-icon">🗣️</span>5–20 words typical</li>
+              <li class="milestone-item"><span class="milestone-item-icon">🥄</span>Uses spoon with some spilling</li>
+              <li class="milestone-item"><span class="milestone-item-icon">📚</span>Points to pictures in books</li>
+              <li class="milestone-item"><span class="milestone-item-icon">😤</span>Tantrums beginning</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="milestone-month">
+          <div class="milestone-dot">18m</div>
+          <div class="milestone-card">
+            <div class="milestone-age">18 months</div>
+            <ul class="milestone-items">
+              <li class="milestone-item"><span class="milestone-item-icon">🗣️</span>10+ words</li>
+              <li class="milestone-item"><span class="milestone-item-icon">🏃</span>Walks and can run a little</li>
+              <li class="milestone-item"><span class="milestone-item-icon">🌍</span>Simple pretend play</li>
+              <li class="milestone-item"><span class="milestone-item-icon">😤</span>Tantrum peak approaching</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="milestone-month">
+          <div class="milestone-dot">20m</div>
+          <div class="milestone-card">
+            <div class="milestone-age">20 months</div>
+            <ul class="milestone-items">
+              <li class="milestone-item"><span class="milestone-item-icon">🏃</span>Runs confidently</li>
+              <li class="milestone-item"><span class="milestone-item-icon">🗂️</span>Sorts by shape or colour</li>
+              <li class="milestone-item"><span class="milestone-item-icon">🧹</span>Interested in real tasks</li>
+              <li class="milestone-item"><span class="milestone-item-icon">🤝</span>Plays near other children</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="milestone-month">
+          <div class="milestone-dot">22m</div>
+          <div class="milestone-card">
+            <div class="milestone-age">22 months</div>
+            <ul class="milestone-items">
+              <li class="milestone-item"><span class="milestone-item-icon">💬</span>Two-word phrases</li>
+              <li class="milestone-item"><span class="milestone-item-icon">🎨</span>Intentional scribbling</li>
+              <li class="milestone-item"><span class="milestone-item-icon">🧱</span>Stacks 4–6 blocks</li>
+              <li class="milestone-item"><span class="milestone-item-icon">🪞</span>Recognises self in mirror</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="milestone-month">
+          <div class="milestone-dot">24m</div>
+          <div class="milestone-card">
+            <div class="milestone-age">24 months</div>
+            <ul class="milestone-items">
+              <li class="milestone-item"><span class="milestone-item-icon">💬</span>Puts 2 words together</li>
+              <li class="milestone-item"><span class="milestone-item-icon">🔢</span>Emerging number sense</li>
+              <li class="milestone-item"><span class="milestone-item-icon">⚽</span>Kicks a ball</li>
+              <li class="milestone-item"><span class="milestone-item-icon">🌍</span>Rich pretend play</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <p class="milestone-hint">← scroll to explore →</p>
   </div>
 </div>
 
-<!-- MONTHS -->
+<!-- MONTHS GRID -->
 <div class="months-section fade-in">
-  <div class="section-tag">The plan</div>
-  <h2 class="section-title">Twelve months,<br>twelve themes</h2>
-
+  <div class="section-tag">The themes</div>
+  <h2 class="section-title">Twelve months,<br>twelve lenses</h2>
   <div class="months-grid">
 
-    <!-- JUNE — ACTIVE FEATURED -->
     <div class="month-card active featured" data-emoji="🐄" onclick="window.location='ajna-june.html'">
       <div class="card-top">
         <div class="card-month">June · Month 13</div>
@@ -543,258 +368,98 @@
           <span class="card-tag">🪨 Balance</span>
         </div>
       </div>
-      <div class="card-bottom">
-        <a href="ajna-june.html" class="card-cta">
-          Open this month <span class="card-cta-arrow">→</span>
-        </a>
-      </div>
+      <div class="card-bottom"><a href="ajna-june.html" class="card-cta">Open this month <span class="card-cta-arrow">→</span></a></div>
     </div>
 
-    <!-- JULY -->
-    <div class="month-card coming" data-emoji="🚗">
-      <div class="card-top">
-        <div class="card-month">July · Month 14</div>
-        <div class="card-theme">Transport</div>
-        <div class="card-age">13–14 months</div>
-        <div class="card-tags">
-          <span class="card-tag">🚗 Vehicles</span>
-          <span class="card-tag">🚂 Trains</span>
-          <span class="card-tag">✈️ Planes</span>
-        </div>
-      </div>
-      <div class="card-bottom">
-        <span class="coming-label">Coming soon</span>
-      </div>
+    <div class="month-card active" data-emoji="🚗" onclick="window.location='sprout-july.html'">
+      <div class="card-top"><div class="card-month">July · Month 14</div><div class="card-theme">Transport</div><div class="card-age">13–14 months</div>
+      <div class="card-tags"><span class="card-tag">🚗 Vehicles</span><span class="card-tag">🚂 Trains</span><span class="card-tag">✈️ Planes</span></div></div>
+      <div class="card-bottom"><a href="sprout-july.html" class="card-cta">Open this month <span class="card-cta-arrow">→</span></a></div>
     </div>
 
-    <!-- AUGUST -->
     <div class="month-card coming" data-emoji="🐬">
-      <div class="card-top">
-        <div class="card-month">August · Month 15</div>
-        <div class="card-theme">Ocean & Sea Animals</div>
-        <div class="card-age">14–15 months</div>
-        <div class="card-tags">
-          <span class="card-tag">🐬 Ocean</span>
-          <span class="card-tag">🧊 Ice play</span>
-          <span class="card-tag">🏊 Swimming</span>
-        </div>
-      </div>
-      <div class="card-bottom">
-        <span class="coming-label">Coming soon</span>
-      </div>
+      <div class="card-top"><div class="card-month">August · Month 15</div><div class="card-theme">Ocean & Sea Animals</div><div class="card-age">14–15 months</div>
+      <div class="card-tags"><span class="card-tag">🐬 Ocean</span><span class="card-tag">🧊 Ice play</span><span class="card-tag">🏊 Swimming</span></div></div>
+      <div class="card-bottom"><span class="coming-label">Coming soon</span></div>
     </div>
 
-    <!-- SEPTEMBER -->
     <div class="month-card coming" data-emoji="🍎">
-      <div class="card-top">
-        <div class="card-month">September · Month 16</div>
-        <div class="card-theme">Fruit & Food</div>
-        <div class="card-age">15–16 months</div>
-        <div class="card-tags">
-          <span class="card-tag">🍎 Food</span>
-          <span class="card-tag">🍳 Cooking</span>
-          <span class="card-tag">🌾 Nutrition</span>
-        </div>
-      </div>
-      <div class="card-bottom">
-        <span class="coming-label">Coming soon</span>
-      </div>
+      <div class="card-top"><div class="card-month">September · Month 16</div><div class="card-theme">Fruit & Food</div><div class="card-age">15–16 months</div>
+      <div class="card-tags"><span class="card-tag">🍎 Food</span><span class="card-tag">🍳 Cooking</span><span class="card-tag">🌾 Practical life</span></div></div>
+      <div class="card-bottom"><span class="coming-label">Coming soon</span></div>
     </div>
 
-    <!-- OCTOBER -->
     <div class="month-card coming" data-emoji="🌦️">
-      <div class="card-top">
-        <div class="card-month">October · Month 17</div>
-        <div class="card-theme">Nature & Weather</div>
-        <div class="card-age">16–17 months</div>
-        <div class="card-tags">
-          <span class="card-tag">🌦️ Weather</span>
-          <span class="card-tag">🌿 Nature</span>
-          <span class="card-tag">🏔️ Cameron Highlands</span>
-        </div>
-      </div>
-      <div class="card-bottom">
-        <span class="coming-label">Coming soon</span>
-      </div>
+      <div class="card-top"><div class="card-month">October · Month 17</div><div class="card-theme">Nature & Weather</div><div class="card-age">16–17 months</div>
+      <div class="card-tags"><span class="card-tag">🌦️ Weather</span><span class="card-tag">🌿 Nature</span><span class="card-tag">🏔️ Outdoors</span></div></div>
+      <div class="card-bottom"><span class="coming-label">Coming soon</span></div>
     </div>
 
-    <!-- NOVEMBER -->
     <div class="month-card coming" data-emoji="🪔">
-      <div class="card-top">
-        <div class="card-month">November · Month 18</div>
-        <div class="card-theme">Colours & Diwali</div>
-        <div class="card-age">17–18 months</div>
-        <div class="card-tags">
-          <span class="card-tag">🪔 Diwali</span>
-          <span class="card-tag">🌈 Colours</span>
-          <span class="card-tag">🎨 Rangoli</span>
-        </div>
-      </div>
-      <div class="card-bottom">
-        <span class="coming-label">Coming soon</span>
-      </div>
+      <div class="card-top"><div class="card-month">November · Month 18</div><div class="card-theme">Colours & Diwali</div><div class="card-age">17–18 months</div>
+      <div class="card-tags"><span class="card-tag">🪔 Diwali</span><span class="card-tag">🌈 Colours</span><span class="card-tag">🎨 Rangoli</span></div></div>
+      <div class="card-bottom"><span class="coming-label">Coming soon</span></div>
     </div>
 
-    <!-- DECEMBER -->
     <div class="month-card coming" data-emoji="❄️">
-      <div class="card-top">
-        <div class="card-month">December · Month 19</div>
-        <div class="card-theme">Christmas, Snow & Polar Animals</div>
-        <div class="card-age">18–19 months</div>
-        <div class="card-tags">
-          <span class="card-tag">❄️ Snow</span>
-          <span class="card-tag">🐧 Polar animals</span>
-          <span class="card-tag">🎄 Christmas</span>
-        </div>
-      </div>
-      <div class="card-bottom">
-        <span class="coming-label">Coming soon</span>
-      </div>
+      <div class="card-top"><div class="card-month">December · Month 19</div><div class="card-theme">Christmas, Snow & Polar Animals</div><div class="card-age">18–19 months</div>
+      <div class="card-tags"><span class="card-tag">❄️ Snow</span><span class="card-tag">🐧 Polar</span><span class="card-tag">🎄 Christmas</span></div></div>
+      <div class="card-bottom"><span class="coming-label">Coming soon</span></div>
     </div>
 
-    <!-- JANUARY -->
     <div class="month-card coming" data-emoji="😊">
-      <div class="card-top">
-        <div class="card-month">January · Month 20</div>
-        <div class="card-theme">Emotions</div>
-        <div class="card-age">19–20 months</div>
-        <div class="card-tags">
-          <span class="card-tag">😊 Feelings</span>
-          <span class="card-tag">🪞 Mirror play</span>
-          <span class="card-tag">📚 Patricelli books</span>
-        </div>
-      </div>
-      <div class="card-bottom">
-        <span class="coming-label">Coming soon</span>
-      </div>
+      <div class="card-top"><div class="card-month">January · Month 20</div><div class="card-theme">Emotions</div><div class="card-age">19–20 months</div>
+      <div class="card-tags"><span class="card-tag">😊 Feelings</span><span class="card-tag">🪞 Mirror play</span><span class="card-tag">📚 Stories</span></div></div>
+      <div class="card-bottom"><span class="coming-label">Coming soon</span></div>
     </div>
 
-    <!-- FEBRUARY -->
     <div class="month-card coming" data-emoji="🚜">
-      <div class="card-top">
-        <div class="card-month">February · Month 21</div>
-        <div class="card-theme">Vehicles & Construction</div>
-        <div class="card-age">20–21 months</div>
-        <div class="card-tags">
-          <span class="card-tag">🚜 Diggers</span>
-          <span class="card-tag">🔨 Tool set</span>
-          <span class="card-tag">🏗️ Building</span>
-        </div>
-      </div>
-      <div class="card-bottom">
-        <span class="coming-label">Coming soon</span>
-      </div>
+      <div class="card-top"><div class="card-month">February · Month 21</div><div class="card-theme">Vehicles & Construction</div><div class="card-age">20–21 months</div>
+      <div class="card-tags"><span class="card-tag">🚜 Diggers</span><span class="card-tag">🔨 Tools</span><span class="card-tag">🏗️ Building</span></div></div>
+      <div class="card-bottom"><span class="coming-label">Coming soon</span></div>
     </div>
 
-    <!-- MARCH -->
     <div class="month-card coming" data-emoji="🙌">
-      <div class="card-top">
-        <div class="card-month">March · Month 22</div>
-        <div class="card-theme">Body Parts</div>
-        <div class="card-age">21–22 months</div>
-        <div class="card-tags">
-          <span class="card-tag">🙌 Body</span>
-          <span class="card-tag">🪞 Self awareness</span>
-          <span class="card-tag">🛁 Bath time</span>
-        </div>
-      </div>
-      <div class="card-bottom">
-        <span class="coming-label">Coming soon</span>
-      </div>
+      <div class="card-top"><div class="card-month">March · Month 22</div><div class="card-theme">Body Parts</div><div class="card-age">21–22 months</div>
+      <div class="card-tags"><span class="card-tag">🙌 Body</span><span class="card-tag">🪞 Self</span><span class="card-tag">🛁 Bath time</span></div></div>
+      <div class="card-bottom"><span class="coming-label">Coming soon</span></div>
     </div>
 
-    <!-- APRIL -->
     <div class="month-card coming" data-emoji="🦁">
-      <div class="card-top">
-        <div class="card-month">April · Month 23</div>
-        <div class="card-theme">Wild Animals</div>
-        <div class="card-age">22–23 months</div>
-        <div class="card-tags">
-          <span class="card-tag">🦁 Wild</span>
-          <span class="card-tag">🦒 Safari</span>
-          <span class="card-tag">🦓 Singapore Zoo</span>
-        </div>
-      </div>
-      <div class="card-bottom">
-        <span class="coming-label">Coming soon</span>
-      </div>
+      <div class="card-top"><div class="card-month">April · Month 23</div><div class="card-theme">Wild Animals</div><div class="card-age">22–23 months</div>
+      <div class="card-tags"><span class="card-tag">🦁 Wild</span><span class="card-tag">🦒 Safari</span><span class="card-tag">🌿 Zoo</span></div></div>
+      <div class="card-bottom"><span class="coming-label">Coming soon</span></div>
     </div>
 
-    <!-- MAY -->
     <div class="month-card coming" data-emoji="🔢">
-      <div class="card-top">
-        <div class="card-month">May · Month 24</div>
-        <div class="card-theme">Numbers 1–5</div>
-        <div class="card-age">23–24 months</div>
-        <div class="card-tags">
-          <span class="card-tag">🔢 Counting</span>
-          <span class="card-tag">🧮 Quantity</span>
-          <span class="card-tag">🎂 2nd Birthday</span>
-        </div>
-      </div>
-      <div class="card-bottom">
-        <span class="coming-label">Coming soon</span>
-      </div>
+      <div class="card-top"><div class="card-month">May · Month 24</div><div class="card-theme">Numbers 1–5</div><div class="card-age">23–24 months</div>
+      <div class="card-tags"><span class="card-tag">🔢 Counting</span><span class="card-tag">🧮 Quantity</span><span class="card-tag">🎂 2nd Birthday</span></div></div>
+      <div class="card-bottom"><span class="coming-label">Coming soon</span></div>
     </div>
 
   </div>
 </div>
 
-<!-- PRINCIPLES -->
-<div class="principles-section fade-in">
-  <div class="principles-inner">
-    <div class="section-tag">How we play</div>
-    <h2 class="section-title" style="color:var(--cream)">The principles<br>behind everything</h2>
-    <div class="principles-grid">
-      <div class="principle">
-        <span class="principle-icon">🖐️</span>
-        <h4>Hands first</h4>
-        <p>Ajna learns through touch before anything else. Let him feel, dig, squeeze and explore before naming. The hands are building the mind.</p>
-      </div>
-      <div class="principle">
-        <span class="principle-icon">💬</span>
-        <h4>Name everything</h4>
-        <p>Simple, specific language attached to what he's doing right now. "Big cow." "Full bowl." "In the mud." This is how vocabulary consolidates.</p>
-      </div>
-      <div class="principle">
-        <span class="principle-icon">🔁</span>
-        <h4>Repetition is learning</h4>
-        <p>Doing the same thing 20 times isn't boring — it's how his brain builds the connection. Follow his lead when he repeats.</p>
-      </div>
-      <div class="principle">
-        <span class="principle-icon">⏱️</span>
-        <h4>Short is enough</h4>
-        <p>5–10 minutes of full engagement beats an hour of half-attention. End while he still wants more. Leave him wanting to come back.</p>
-      </div>
-      <div class="principle">
-        <span class="principle-icon">🌿</span>
-        <h4>Free play first</h4>
-        <p>Unstructured self-directed time is the biggest developmental block of every day. Don't fill it. Let him be bored — that's where curiosity lives.</p>
-      </div>
-      <div class="principle">
-        <span class="principle-icon">❤️</span>
-        <h4>Your presence</h4>
-        <p>No phone. No multitasking. Your calm, curious attention beside him is the most developmental thing in the room. Everything else is secondary.</p>
-      </div>
-    </div>
+<!-- QUOTE -->
+<div class="quote-strip fade-in">
+  <div class="quote-inner">
+    <span class="quote-leaf">🌱</span>
+    <p class="quote-text">"The goal isn't to teach them. It's to be curious alongside them."</p>
+    <p class="quote-sub">Sprout was built on a simple belief — that children already know what's interesting. Our job is to create the conditions for them to find it.</p>
   </div>
 </div>
 
 <!-- FOOTER -->
 <div class="footer">
-  <div class="footer-name">Ajna's World</div>
-  <div class="footer-sub">Built with love · Singapore · 2026</div>
+  <div class="footer-title">Sprout</div>
+  <div class="footer-sub">Rooted in curiosity · Grown with love · Ages 12–24 months</div>
 </div>
 
 <script>
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) entry.target.classList.add('visible');
-    });
-  }, { threshold: 0.1 });
-
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 </script>
-
 </body>
 </html>

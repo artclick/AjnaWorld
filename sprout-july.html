@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sprout · July · Transport Month</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sky: #1A3A5C;
+    --sky-mid: #1E4976;
+    --sky-light: #2E6B9E;
+    --cloud: #EFF4F8;
+    --cloud-warm: #F5F0E8;
+    --tarmac: #3A3A3A;
+    --tarmac-light: #5A5A5A;
+    --sun: #E8B84B;
+    --sun-light: #F5D078;
+    --signal-red: #C4362A;
+    --signal-green: #2E7D32;
+    --birch: #F4EFE6;
+    --bark: #1A1208;
+    --mist: #D8E8F0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--cloud); font-family: 'DM Sans', sans-serif; color: var(--bark); overflow-x: hidden; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: var(--sky);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; padding: 80px 24px 120px;
+    position: relative; overflow: hidden;
+  }
+
+  /* Sky atmosphere */
+  .hero::before {
+    content: ''; position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 20%, rgba(232,184,75,0.18) 0%, transparent 40%),
+      radial-gradient(ellipse at 80% 10%, rgba(232,184,75,0.10) 0%, transparent 35%),
+      radial-gradient(ellipse at 50% 100%, rgba(10,20,40,0.6) 0%, transparent 50%),
+      radial-gradient(ellipse at 0% 60%, rgba(26,58,92,0.8) 0%, transparent 40%);
+  }
+
+  /* Cloud shapes */
+  .hero-clouds {
+    position: absolute; inset: 0; pointer-events: none; z-index: 0;
+  }
+
+  .cloud {
+    position: absolute;
+    background: rgba(255,255,255,0.06);
+    border-radius: 99px;
+  }
+
+  .cloud-1 { width: 200px; height: 60px; top: 15%; left: -40px; animation: drift 18s ease-in-out infinite; }
+  .cloud-2 { width: 140px; height: 45px; top: 25%; right: 10%; animation: drift 22s ease-in-out infinite reverse; }
+  .cloud-3 { width: 180px; height: 55px; top: 40%; left: 20%; animation: drift 25s ease-in-out infinite 3s; }
+
+  @keyframes drift {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(20px); }
+  }
+
+  .hero-tag {
+    font-size: 10px; font-weight: 500; letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--sun-light); margin-bottom: 24px; position: relative; z-index: 1;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(72px, 18vw, 160px);
+    font-weight: 700; font-style: italic;
+    color: var(--birch); line-height: 0.85; letter-spacing: -3px;
+    margin-bottom: 4px; position: relative; z-index: 1;
+  }
+
+  .hero-subtitle {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(20px, 5vw, 36px);
+    font-weight: 400; font-style: italic;
+    color: var(--sun); margin-bottom: 40px;
+    position: relative; z-index: 1;
+  }
+
+  .hero-pills {
+    display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;
+    margin-bottom: 56px; position: relative; z-index: 1;
+  }
+
+  .pill {
+    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+    color: var(--birch); padding: 7px 16px; border-radius: 99px;
+    font-size: 12px; font-weight: 300; letter-spacing: 0.03em;
+  }
+
+  .scroll-hint {
+    position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    color: rgba(255,255,255,0.2); font-size: 9px; letter-spacing: 0.25em;
+    text-transform: uppercase; z-index: 1;
+  }
+  .scroll-line {
+    width: 1px; height: 48px;
+    background: linear-gradient(to bottom, rgba(232,184,75,0.5), transparent);
+    animation: pulse 2.5s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:.3}50%{opacity:1} }
+
+  /* ROAD DIVIDER */
+  .road-divider {
+    background: var(--sky); height: 80px; position: relative; overflow: hidden;
+  }
+  .road-divider svg { position: absolute; bottom: 0; width: 100%; }
+
+  /* SHARED */
+  section { padding: 72px 24px; max-width: 760px; margin: 0 auto; }
+
+  .section-tag {
+    font-size: 10px; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--sky-light); margin-bottom: 16px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .section-tag::after { content: ''; flex: 1; height: 1px; background: var(--sky-light); opacity: 0.25; }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(30px, 6vw, 50px); font-weight: 400; line-height: 1.1;
+    margin-bottom: 40px; color: var(--bark);
+  }
+
+  /* WHAT THEY NEED */
+  .needs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+  .need-card {
+    background: var(--sky); color: var(--birch);
+    border-radius: 18px; padding: 26px 22px;
+    position: relative; overflow: hidden;
+  }
+
+  .need-card::before {
+    content: attr(data-emoji); position: absolute;
+    top: -8px; right: -4px; font-size: 64px; opacity: 0.1; line-height: 1;
+  }
+
+  .need-card .need-emoji { font-size: 26px; margin-bottom: 10px; display: block; }
+
+  .need-card h3 {
+    font-family: 'Playfair Display', serif; font-size: 17px;
+    font-weight: 600; margin-bottom: 7px; color: var(--sun);
+  }
+
+  .need-card p { font-size: 12px; line-height: 1.6; color: rgba(244,239,230,0.7); font-weight: 300; }
+
+  .need-card.wide {
+    grid-column: span 2; background: var(--signal-red);
+    display: flex; gap: 18px; align-items: center;
+  }
+
+  .need-card.wide h3 { color: var(--birch); }
+  .need-card.wide p { color: rgba(244,239,230,0.85); }
+
+  /* MONTESSORI */
+  .montessori-list { display: flex; flex-direction: column; gap: 12px; }
+
+  .mont-item {
+    background: var(--cloud-warm); border-radius: 16px;
+    padding: 20px 22px; display: flex; gap: 14px; align-items: flex-start;
+    border-left: 3px solid var(--sky-light);
+  }
+
+  .mont-icon { font-size: 26px; flex-shrink: 0; margin-top: 2px; }
+  .mont-item h4 { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 600; margin-bottom: 4px; }
+  .mont-item p { font-size: 12px; color: #5A5A5A; line-height: 1.55; font-weight: 300; }
+
+  /* TRANSPORT THEME */
+  .transport-section {
+    background: var(--tarmac); color: var(--birch);
+    padding: 72px 0; width: 100%; max-width: 100%;
+  }
+
+  .transport-inner { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+  .transport-section .section-tag { color: var(--sun); }
+  .transport-section .section-tag::after { background: var(--sun); opacity: 0.25; }
+  .transport-section .section-title { color: var(--birch); }
+
+  .vehicles-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-bottom: 40px; }
+
+  .vehicle-card {
+    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px; padding: 20px 16px; text-align: center;
+    transition: background 0.2s;
+  }
+  .vehicle-card:hover { background: rgba(255,255,255,0.1); }
+
+  .vehicle-emoji { font-size: 36px; margin-bottom: 8px; display: block; }
+  .vehicle-name { font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 600; color: var(--birch); margin-bottom: 4px; }
+  .vehicle-sound { font-size: 11px; color: var(--sun); font-style: italic; font-weight: 300; }
+
+  /* SINGAPORE OUTINGS */
+  .sg-outings {
+    background: rgba(232,184,75,0.12); border: 1px solid rgba(232,184,75,0.25);
+    border-radius: 18px; padding: 26px; margin-bottom: 40px;
+  }
+
+  .sg-outings h4 {
+    font-family: 'Playfair Display', serif; font-size: 18px;
+    color: var(--sun-light); margin-bottom: 16px;
+  }
+
+  .sg-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .sg-list li {
+    font-size: 12px; color: rgba(244,239,230,0.75);
+    padding-left: 20px; position: relative; line-height: 1.5; font-weight: 300;
+  }
+  .sg-list li::before { content: '→'; position: absolute; left: 0; color: var(--sun); }
+
+  /* SENSORY IDEAS */
+  .sensory-cards { display: flex; flex-direction: column; gap: 14px; margin-bottom: 40px; }
+
+  .sensory-card {
+    background: rgba(46,107,158,0.15); border: 1px solid rgba(46,107,158,0.3);
+    border-radius: 16px; padding: 22px; display: flex; gap: 14px;
+  }
+
+  .sensory-num {
+    font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 400;
+    color: var(--sky-light); line-height: 1; flex-shrink: 0; width: 38px;
+  }
+
+  .sensory-card h4 { font-family: 'Playfair Display', serif; font-size: 16px; margin-bottom: 5px; color: var(--birch); }
+  .sensory-card p { font-size: 12px; color: rgba(244,239,230,0.65); line-height: 1.6; font-weight: 300; }
+
+  /* MAGNETIC WALL */
+  .wall-ideas {
+    background: rgba(46,107,158,0.2); border: 1px solid rgba(46,107,158,0.35);
+    border-radius: 18px; padding: 26px;
+  }
+
+  .wall-ideas h4 { font-family: 'Playfair Display', serif; font-size: 19px; color: var(--sun-light); margin-bottom: 16px; }
+  .wall-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .wall-list li { font-size: 12px; color: rgba(244,239,230,0.75); padding-left: 20px; position: relative; line-height: 1.5; font-weight: 300; }
+  .wall-list li::before { content: '→'; position: absolute; left: 0; color: var(--sky-light); }
+
+  /* PLAY */
+  .play-items { display: flex; flex-direction: column; gap: 14px; }
+
+  .play-item {
+    display: flex; gap: 18px; align-items: flex-start;
+    padding: 22px; background: var(--cloud-warm); border-radius: 16px;
+  }
+
+  .play-icon { font-size: 34px; flex-shrink: 0; }
+  .play-item h4 { font-family: 'Playfair Display', serif; font-size: 17px; margin-bottom: 5px; }
+  .play-item p { font-size: 12px; color: #5A5A5A; line-height: 1.55; font-weight: 300; }
+
+  .play-tag {
+    display: inline-block; margin-top: 8px;
+    background: var(--sky); color: white;
+    font-size: 9px; padding: 3px 10px; border-radius: 99px;
+    letter-spacing: 0.05em; font-weight: 500;
+  }
+
+  /* GROSS MOTOR */
+  .gross-section {
+    background: var(--sky-mid); padding: 72px 0; width: 100%; max-width: 100%;
+  }
+  .gross-inner { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+  .gross-section .section-tag { color: var(--sun); }
+  .gross-section .section-tag::after { background: var(--sun); opacity: 0.25; }
+  .gross-section .section-title { color: var(--birch); }
+
+  .gross-items { display: flex; flex-direction: column; gap: 14px; }
+
+  .gross-item {
+    display: flex; gap: 18px; align-items: flex-start;
+    padding: 22px; background: rgba(255,255,255,0.07);
+    border-radius: 16px; border: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .gross-icon { font-size: 34px; flex-shrink: 0; }
+  .gross-item h4 { font-family: 'Playfair Display', serif; font-size: 17px; margin-bottom: 5px; color: var(--birch); }
+  .gross-item p { font-size: 12px; color: rgba(244,239,230,0.65); line-height: 1.55; font-weight: 300; }
+  .gross-tag {
+    display: inline-block; margin-top: 8px;
+    background: rgba(232,184,75,0.2); color: var(--sun-light);
+    font-size: 9px; padding: 3px 10px; border-radius: 99px;
+    letter-spacing: 0.05em; font-weight: 500; border: 1px solid rgba(232,184,75,0.3);
+  }
+
+  /* MATHS */
+  .maths-section { background: var(--mist); padding: 72px 24px; }
+  .maths-inner { max-width: 760px; margin: 0 auto; }
+  .maths-section .section-tag { color: var(--sky-mid); }
+  .maths-section .section-tag::after { background: var(--sky-mid); opacity: 0.25; }
+
+  .maths-concepts { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 28px; }
+
+  .maths-concept {
+    background: white; border-radius: 14px; padding: 18px;
+    text-align: center; border: 1px solid rgba(26,58,92,0.1);
+  }
+
+  .concept-pair { font-family: 'Playfair Display', serif; font-size: 21px; font-weight: 600; color: var(--sky); margin-bottom: 5px; }
+  .concept-example { font-size: 11px; color: rgba(26,18,8,0.5); font-weight: 300; font-style: italic; }
+
+  .maths-tip {
+    background: var(--sky); color: var(--birch);
+    border-radius: 18px; padding: 26px;
+  }
+
+  .maths-tip h4 { font-family: 'Playfair Display', serif; font-size: 18px; color: var(--sun); margin-bottom: 10px; }
+  .maths-tip p { font-size: 13px; color: rgba(244,239,230,0.7); line-height: 1.65; font-weight: 300; }
+
+  /* RESOURCES */
+  .resources-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+  .resource-cat {
+    background: var(--cloud-warm); border-radius: 16px; padding: 20px;
+  }
+
+  .resource-cat.full {
+    grid-column: span 2; background: var(--sky); color: var(--birch);
+  }
+
+  .resource-cat h4 {
+    font-family: 'Playfair Display', serif; font-size: 14px;
+    font-weight: 600; margin-bottom: 12px; color: var(--sky-light);
+  }
+
+  .resource-cat.full h4 { color: var(--sun); }
+
+  .resource-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+  .resource-list li { font-size: 11px; color: #5A5A5A; padding-left: 14px; position: relative; line-height: 1.4; font-weight: 300; }
+  .resource-cat.full .resource-list li { color: rgba(244,239,230,0.65); }
+  .resource-list li::before { content: '·'; position: absolute; left: 4px; color: var(--sky-light); font-weight: bold; }
+  .resource-cat.full .resource-list li::before { color: var(--sun); }
+
+  /* GOLDEN RULE */
+  .golden-rule {
+    background: var(--sun); padding: 56px 24px; text-align: center;
+  }
+
+  .golden-rule p {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(18px, 4vw, 28px); font-weight: 400; font-style: italic;
+    color: var(--bark); max-width: 560px; margin: 0 auto; line-height: 1.4;
+  }
+
+  .golden-rule strong { font-weight: 700; font-style: normal; }
+
+  .golden-rule a {
+    display: inline-block; margin-top: 24px;
+    font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: rgba(26,18,8,0.45); text-decoration: none;
+  }
+
+  /* FADE */
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 480px) {
+    .needs-grid { grid-template-columns: 1fr; }
+    .need-card.wide { flex-direction: column; grid-column: span 1; }
+    .vehicles-grid { grid-template-columns: repeat(2,1fr); }
+    .maths-concepts { grid-template-columns: 1fr; }
+    .resources-grid { grid-template-columns: 1fr; }
+    .resource-cat.full { grid-column: span 1; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-clouds">
+    <div class="cloud cloud-1"></div>
+    <div class="cloud cloud-2"></div>
+    <div class="cloud cloud-3"></div>
+  </div>
+  <div class="hero-tag">Sprout · July 2026 · Month 14</div>
+  <h1 class="hero-title">Transport</h1>
+  <p class="hero-subtitle">On the move</p>
+  <div class="hero-pills">
+    <span class="pill">🚗 Vehicles</span>
+    <span class="pill">🚂 Trains</span>
+    <span class="pill">✈️ Planes</span>
+    <span class="pill">🚌 Buses</span>
+    <span class="pill">⛵ Boats</span>
+    <span class="pill">🚶 First steps</span>
+  </div>
+  <div class="scroll-hint"><div class="scroll-line"></div>explore</div>
+</div>
+
+<!-- ROAD TRANSITION -->
+<div class="road-divider">
+  <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <path d="M0,80 L0,0 L1440,0 L1440,80 Z" fill="#1A3A5C"/>
+    <!-- Road surface -->
+    <rect x="0" y="50" width="1440" height="30" fill="#3A3A3A"/>
+    <!-- Road markings -->
+    <rect x="100" y="63" width="80" height="4" fill="#E8B84B" opacity="0.6" rx="2"/>
+    <rect x="280" y="63" width="80" height="4" fill="#E8B84B" opacity="0.6" rx="2"/>
+    <rect x="460" y="63" width="80" height="4" fill="#E8B84B" opacity="0.6" rx="2"/>
+    <rect x="640" y="63" width="80" height="4" fill="#E8B84B" opacity="0.6" rx="2"/>
+    <rect x="820" y="63" width="80" height="4" fill="#E8B84B" opacity="0.6" rx="2"/>
+    <rect x="1000" y="63" width="80" height="4" fill="#E8B84B" opacity="0.6" rx="2"/>
+    <rect x="1180" y="63" width="80" height="4" fill="#E8B84B" opacity="0.6" rx="2"/>
+    <rect x="1360" y="63" width="80" height="4" fill="#E8B84B" opacity="0.6" rx="2"/>
+  </svg>
+</div>
+
+<!-- WHAT THEY NEED -->
+<section class="fade-in">
+  <div class="section-tag">This month</div>
+  <h2 class="section-title">What your toddler<br>needs to learn</h2>
+  <div class="needs-grid">
+    <div class="need-card" data-emoji="🚶">
+      <span class="need-emoji">🚶</span>
+      <h3>Walking arrives</h3>
+      <p>First independent steps are imminent or happening now. Every surface is new — grass, tiles, carpet, slopes. Let them navigate. Stay close but let them fall small falls.</p>
+    </div>
+    <div class="need-card" data-emoji="💬">
+      <span class="need-emoji">💬</span>
+      <h3>Two-word combinations</h3>
+      <p>"Big bus." "Fast car." "Red truck." Adjective plus noun is the language target this month. Model it constantly — they're absorbing before performing.</p>
+    </div>
+    <div class="need-card" data-emoji="🤝">
+      <span class="need-emoji">🤝</span>
+      <h3>Intentional imitation</h3>
+      <p>Copying adult actions with real objects deepens this month. Stirring, wiping, pouring, pushing. Let them shadow what you do in the kitchen and around the house.</p>
+    </div>
+    <div class="need-card" data-emoji="🔧">
+      <span class="need-emoji">🔧</span>
+      <h3>Tool use consolidating</h3>
+      <p>The spoon is now a tool with a purpose. Pouring from a small pitcher. Wiping a surface. Two-step sequences becoming deliberate — scoop then transfer, fill then pour.</p>
+    </div>
+    <div class="need-card wide" data-emoji="⭐">
+      <span class="need-emoji" style="font-size:38px">⭐</span>
+      <div>
+        <h3>The walking window</h3>
+        <p>Walking transforms everything. The world doubles in size the moment they can navigate it upright and independently. Every step is building the spatial map of their environment. Follow them — don't lead them — through this transition.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MONTESSORI -->
+<section class="fade-in">
+  <div class="section-tag">Simple activities</div>
+  <h2 class="section-title">Big impact<br>this month</h2>
+  <div class="montessori-list">
+    <div class="mont-item">
+      <span class="mont-icon">🥄</span>
+      <div>
+        <h4>Spoon transfer</h4>
+        <p>Two bowls, large objects — pompoms, large beads, pasta. Transfer from one bowl to the other with a spoon. First deliberate tool use with a functional outcome. Start with large objects, reduce size as precision develops. The spill is part of the learning.</p>
+      </div>
+    </div>
+    <div class="mont-item">
+      <span class="mont-icon">🫗</span>
+      <div>
+        <h4>Pouring from a pitcher</h4>
+        <p>A small child-sized pitcher with a controlled amount of water. Pour into a cup. The control of the pour — slowing it, stopping it, aiming it — is the fine motor target. Start with dry rice before water. The full and empty language is early maths happening naturally.</p>
+      </div>
+    </div>
+    <div class="mont-item">
+      <span class="mont-icon">🧽</span>
+      <div>
+        <h4>Wiping a surface</h4>
+        <p>A damp cloth, a low table or tray. They wipe. Real task, real outcome, real satisfaction. This is the Montessori practical life principle at its simplest — doing meaningful work produces a sense of competence nothing else replicates at this age.</p>
+      </div>
+    </div>
+    <div class="mont-item">
+      <span class="mont-icon">🚗</span>
+      <div>
+        <h4>Washing the vehicles</h4>
+        <p>Transport theme meets practical life. Small bowl of soapy water, wooden vehicles, a cloth to dry them. They wash, you name. "Washing the red car. The car is clean." Functional activity with vocabulary built in.</p>
+      </div>
+    </div>
+    <div class="mont-item">
+      <span class="mont-icon">🛒</span>
+      <div>
+        <h4>Push cart walking</h4>
+        <p>A laundry basket, a wooden trolley, or any stable object they can push while upright. Carrying while walking accelerates balance consolidation faster than walking alone. Give them a basket with two objects to carry from one room to another. Purpose plus movement.</p>
+      </div>
+    </div>
+    <div class="mont-item">
+      <span class="mont-icon">🎵</span>
+      <div>
+        <h4>Wheels on the Bus</h4>
+        <p>Movement songs with body actions are language, music, and gross motor simultaneously. Wheels on the Bus, Row Row Row Your Boat, Zoom Zoom Zoom We're Going to the Moon. Transport vocabulary delivered through rhythm and repetition — the fastest route to consolidation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRANSPORT THEME -->
+<div class="transport-section fade-in">
+  <div class="transport-inner">
+    <div class="section-tag">July theme</div>
+    <h2 class="section-title">Transport &<br>getting there</h2>
+
+    <div class="vehicles-grid">
+      <div class="vehicle-card">
+        <span class="vehicle-emoji">🚗</span>
+        <div class="vehicle-name">Car</div>
+        <div class="vehicle-sound">Vroom vroom</div>
+      </div>
+      <div class="vehicle-card">
+        <span class="vehicle-emoji">🚌</span>
+        <div class="vehicle-name">Bus</div>
+        <div class="vehicle-sound">Beep beep</div>
+      </div>
+      <div class="vehicle-card">
+        <span class="vehicle-emoji">🚂</span>
+        <div class="vehicle-name">Train</div>
+        <div class="vehicle-sound">Chugga chugga</div>
+      </div>
+      <div class="vehicle-card">
+        <span class="vehicle-emoji">✈️</span>
+        <div class="vehicle-name">Plane</div>
+        <div class="vehicle-sound">Whoooosh</div>
+      </div>
+      <div class="vehicle-card">
+        <span class="vehicle-emoji">⛵</span>
+        <div class="vehicle-name">Boat</div>
+        <div class="vehicle-sound">Splash splash</div>
+      </div>
+      <div class="vehicle-card">
+        <span class="vehicle-emoji">🚲</span>
+        <div class="vehicle-name">Bicycle</div>
+        <div class="vehicle-sound">Ring ring</div>
+      </div>
+    </div>
+
+    <!-- Singapore outings -->
+    <div class="sg-outings">
+      <h4>🇸🇬 Transport in the real world — Singapore</h4>
+      <ul class="sg-list">
+        <li>Tiong Bahru train playground — a full-size train structure to climb on, drive imaginatively, and name. The best transport vocabulary outing in Singapore for this age.</li>
+        <li>MRT ride — stand at the window of the first carriage. Tunnel, platform, tunnel. "Train going fast. Lights. Stop." The real thing is always richer than the toy.</li>
+        <li>East Coast Park — cycling path for bike rides, cargo ships on the horizon, planes on the Changi flight path overhead. Three transport types in one outing.</li>
+        <li>Siloso Beach — cable cars overhead, ferries visible from shore, boats in the water. Look up, look out, name everything moving.</li>
+        <li>Any bus ride — sit upstairs if possible. The elevated view, the stops, the doors opening and closing. "Bus stopping. Doors open. People getting on."</li>
+      </ul>
+    </div>
+
+    <!-- Sensory -->
+    <p style="font-family:'Playfair Display',serif; font-size:22px; color:var(--sun); margin-bottom:20px; font-style:italic;">Sensory Play Ideas</p>
+    <div class="sensory-cards">
+      <div class="sensory-card">
+        <div class="sensory-num">01</div>
+        <div>
+          <h4>Car Wash Water Play</h4>
+          <p>Small bowl of soapy water, wooden vehicles, a cloth to dry them after. Practical life and transport theme combined. The washing mechanic — dipping, scrubbing, drying — is a three-step sequence right at the edge of Stage 2 capacity. "Dirty car. Wash it. Clean car."</p>
+        </div>
+      </div>
+      <div class="sensory-card">
+        <div class="sensory-num">02</div>
+        <div>
+          <h4>Oobleck Road Tracks</h4>
+          <p>Brown oobleck on the baking tray. Drive a wooden vehicle through it slowly — the track impression left behind disappears as the oobleck flows back. The road appears and disappears. Transformation play with a transport narrative. "The car made a road. Where did the road go?"</p>
+        </div>
+      </div>
+      <div class="sensory-card">
+        <div class="sensory-num">03</div>
+        <div>
+          <h4>Frozen Vehicle Rescue</h4>
+          <p>Freeze small transport figures into ice blocks individually. Excavate with warm water poured from a cup. The anticipation of which vehicle is inside each block is the hook — same ice format that produced strong engagement in June, transport themed. Name each vehicle as it emerges.</p>
+        </div>
+      </div>
+      <div class="sensory-card">
+        <div class="sensory-num">04</div>
+        <div>
+          <h4>Coloured Water Boat Play</h4>
+          <p>Blue water in the white sensory bowl. Float simple paper or foam boats — push them, blow them, watch them move. Wind as cause and effect, early physics, gentle preview of August ocean month. "The boat is floating. Blow it. The boat moves."</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Magnetic wall -->
+    <div class="wall-ideas">
+      <h4>🗺️ Magnetic Wall Ideas</h4>
+      <ul class="wall-list">
+        <li>Road on paper — tape an A3 grey sheet to the wall at their height, draw a simple road with a black marker. Vehicles drive along it vertically. The road gives the play a boundary and a narrative.</li>
+        <li>Vehicle magnets — glue a small magnet strip to the back of wooden vehicles. They click onto the magnetic wall and move around it. The magnet release and reattach is the mechanism they love.</li>
+        <li>Colour parking — draw four coloured squares on paper, tape to wall. Park the red car in the red space, blue bus in the blue space. Colour matching through a transport narrative. Early maths: in, out, fits, doesn't fit.</li>
+        <li>City backdrop — three rectangles of different heights with square windows drawn on A3 paper. A road between the buildings. Vehicles drive through the city. The bus stops at the bus stop. First small world play on a vertical surface.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- PLAY -->
+<section class="fade-in">
+  <div class="section-tag">Play</div>
+  <h2 class="section-title">Blocks &<br>construction</h2>
+  <div class="play-items">
+    <div class="play-item">
+      <span class="play-icon">🧱</span>
+      <div>
+        <h4>Duplo — introducing this month</h4>
+        <p>Leave out for 4–6 weeks minimum. Week 1 — handling, mouthing, bashing together. Week 3 — watch for the first deliberate click. Build a simple garage or road for the vehicles — construction meets transport theme. Stack 2–3 bricks, let them knock it down. Repeat.</p>
+        <span class="play-tag">Construction · Cause and effect · Transport integration</span>
+      </div>
+    </div>
+    <div class="play-item">
+      <span class="play-icon">⚙️</span>
+      <div>
+        <h4>Interconnected Cog Wheel Puzzle</h4>
+        <p>Move one wheel, multiple others turn simultaneously. One action produces multiple outcomes — a significant cognitive step up from single cause-and-effect. Visual tracking of several moving parts develops attention and spatial reasoning. This is mechanism obsession fed directly.</p>
+        <span class="play-tag">Mechanism · Cause and effect · Visual tracking</span>
+      </div>
+    </div>
+    <div class="play-item">
+      <span class="play-icon">🏎️</span>
+      <div>
+        <h4>Flip Car Track</h4>
+        <p>Car enters one end, travels through a hidden track, flips, emerges transformed. The cognitive work is trajectory prediction — what will happen to it while I can't see it? Push, anticipate, retrieve. The anticipation before the flip is the developmental moment. This is a step beyond simple object permanence.</p>
+        <span class="play-tag">Trajectory prediction · Cause and effect · Transport</span>
+      </div>
+    </div>
+    <div class="play-item">
+      <span class="play-icon">🚕</span>
+      <div>
+        <h4>Wooden Vehicles — floor and wall</h4>
+        <p>On a smooth tile floor the wooden cars finally roll satisfyingly — this was the missing element in June when the play mat created too much friction. Try them on tiles now. Push and chase is the emerging mechanic: they push, it rolls away, they follow. The city backdrop on the magnetic wall gives the vehicles a vertical small world to inhabit.</p>
+        <span class="play-tag">Gross motor · Spatial reasoning · Transport vocabulary</span>
+      </div>
+    </div>
+    <div class="play-item">
+      <span class="play-icon">🟦</span>
+      <div>
+        <h4>SG60 Pastel Blocks</h4>
+        <p>Continuing from June — the stacking progression this month moves from two blocks to three, then beginning enclosures. Try building a simple garage wall for the vehicles to drive through. Blocks become part of the transport narrative rather than isolated construction. Two-week rotation before a fresh toy comes in.</p>
+        <span class="play-tag">Construction · Spatial reasoning · Transport integration</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GROSS MOTOR -->
+<div class="gross-section fade-in">
+  <div class="gross-inner">
+    <div class="section-tag">Gross motor</div>
+    <h2 class="section-title">Moving the<br>whole body</h2>
+    <div class="gross-items">
+      <div class="gross-item">
+        <span class="gross-icon">👣</span>
+        <div>
+          <h4>First steps — the walking transition</h4>
+          <p>If not walking independently yet, this is the month. The single most effective tool is a push cart or laundry basket — something stable to push while upright that provides moving support rather than fixed support. Gradually reduce how much you hold their hands during walking practice. The moment they take three steps to reach you is the moment. Film it.</p>
+          <span class="gross-tag">Walking · Balance · Independence</span>
+        </div>
+      </div>
+      <div class="gross-item">
+        <span class="gross-icon">🌿</span>
+        <div>
+          <h4>Walking on varied surfaces</h4>
+          <p>Research on proprioceptive development shows that barefoot walking on varied surfaces develops the neural pathways for balance and spatial awareness faster than walking on uniform flat floor. Grass, sand, gentle slopes, smooth tiles, textured path. Each surface requires different balance adjustments. Singapore's parks provide this variety within a short bike ride.</p>
+          <span class="gross-tag">Proprioception · Balance · Sensory integration</span>
+        </div>
+      </div>
+      <div class="gross-item">
+        <span class="gross-icon">🎾</span>
+        <div>
+          <h4>Ball pit</h4>
+          <p>Weekly if possible. At 14 months the play progression moves from cruising the nets to brief unsupported standing in the unstable ball surface. That standing in an unstable environment is doing more balance preparation work than anything available on flat floor. Peer observation of older children continues to build the imitation circuits for movement patterns he'll attempt in coming months.</p>
+          <span class="gross-tag">Balance · Vestibular · Peer observation</span>
+        </div>
+      </div>
+      <div class="gross-item">
+        <span class="gross-icon">🪜</span>
+        <div>
+          <h4>Stairs — up and down</h4>
+          <p>Going up is consolidated. This month focus equally on coming down — facing the stairs, one knee at a time, hands on the step. Coming down requires significantly more spatial confidence than going up because the child can't see where their foot is going. Vary the stairs where possible — different heights, different materials, outdoor steps all provide different challenges.</p>
+          <span class="gross-tag">Bilateral coordination · Spatial confidence · Leg strength</span>
+        </div>
+      </div>
+      <div class="gross-item">
+        <span class="gross-icon">🏊</span>
+        <div>
+          <h4>Swimming</h4>
+          <p>The water confidence window remains open and every session counts. At 14–15 months the focus shifts: wall grab independence — reaching for and gripping the wall without guidance. Back float with progressively lighter support — hands under but not lifting. Beginning of kick practice. No float jackets — these teach the wrong body position and build false confidence without real skill.</p>
+          <span class="gross-tag">Water confidence · Time-sensitive · Bilateral coordination</span>
+        </div>
+      </div>
+      <div class="gross-item">
+        <span class="gross-icon">🚲</span>
+        <div>
+          <h4>Bike rides with purpose</h4>
+          <p>Transport month makes the bike ride thematically rich. Narrate everything moving — "MRT train. Red bus. Taxi. Bicycle." Once walking arrives, add a short walking section at the destination. The transition from bike to walking and back is itself a transport vocabulary moment. "We rode the bike. Now we walk." Aim for a destination with transport to observe — bus stop, MRT station, road with varied vehicles.</p>
+          <span class="gross-tag">Vestibular · Language · Real world transport</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MATHS -->
+<div class="maths-section fade-in">
+  <div class="maths-inner">
+    <div class="section-tag">Early maths</div>
+    <h2 class="section-title" style="color:var(--sky);">How maths sounds<br>in July</h2>
+    <div class="maths-concepts">
+      <div class="maths-concept">
+        <div class="concept-pair">Fast / Slow</div>
+        <div class="concept-example">"The car is fast. The truck is slow."</div>
+      </div>
+      <div class="maths-concept">
+        <div class="concept-pair">Big / Small</div>
+        <div class="concept-example">"Big bus, small car."</div>
+      </div>
+      <div class="maths-concept">
+        <div class="concept-pair">Full / Empty</div>
+        <div class="concept-example">"Full petrol tank. Empty bowl."</div>
+      </div>
+      <div class="maths-concept">
+        <div class="concept-pair">Near / Far</div>
+        <div class="concept-example">"The plane is far away."</div>
+      </div>
+      <div class="maths-concept">
+        <div class="concept-pair">Loud / Quiet</div>
+        <div class="concept-example">"Loud truck. Quiet bicycle."</div>
+      </div>
+      <div class="maths-concept">
+        <div class="concept-pair">More / Less</div>
+        <div class="concept-example">"More cars on the road now."</div>
+      </div>
+    </div>
+    <div class="maths-tip">
+      <h4>The commentator rule</h4>
+      <p>Don't create special maths time. Narrate what's already happening with precise comparative words. On the bike ride — "fast bus, slow bicycle." At the car wash bin — "full of water, now empty." Watching the road — "more cars now, less cars now." The maths is already everywhere in a transport month. Your words are the only thing to add.</p>
+    </div>
+  </div>
+</div>
+
+<!-- RESOURCES -->
+<section class="fade-in">
+  <div class="section-tag">What we have</div>
+  <h2 class="section-title">Resources at home<br>for July</h2>
+  <div class="resources-grid">
+    <div class="resource-cat">
+      <h4>🚗 Transport & Vehicles</h4>
+      <ul class="resource-list">
+        <li>London taxi + red double decker bus</li>
+        <li>J'adore flip car track</li>
+        <li>3 wooden cars</li>
+        <li>Plastic construction vehicles</li>
+        <li>Interconnected cog wheel puzzle</li>
+      </ul>
+    </div>
+    <div class="resource-cat">
+      <h4>🧱 Construction</h4>
+      <ul class="resource-list">
+        <li>Duplo (introducing this month)</li>
+        <li>SG60 pastel blocks</li>
+        <li>4-in-1 sorting box</li>
+        <li>Silicone blocks</li>
+      </ul>
+    </div>
+    <div class="resource-cat">
+      <h4>🌿 Sensory</h4>
+      <ul class="resource-list">
+        <li>White sensory bowl</li>
+        <li>Blue scalloped bowl</li>
+        <li>Cornstarch for oobleck</li>
+        <li>Food colouring</li>
+        <li>Small transport figures for freezing</li>
+        <li>Metal cups and spoons</li>
+      </ul>
+    </div>
+    <div class="resource-cat">
+      <h4>🎨 Art</h4>
+      <ul class="resource-list">
+        <li>Honeysticks crayons</li>
+        <li>IKEA coloured paper</li>
+        <li>Finger paints</li>
+        <li>Black marker for road drawing</li>
+      </ul>
+    </div>
+    <div class="resource-cat">
+      <h4>📚 Books</h4>
+      <ul class="resource-list">
+        <li>Priddy First 100 Words — transport section</li>
+        <li>Any board book with vehicles</li>
+      </ul>
+    </div>
+    <div class="resource-cat">
+      <h4>🪨 Gross Motor</h4>
+      <ul class="resource-list">
+        <li>Balance bike</li>
+        <li>Laundry basket as push cart</li>
+        <li>Stairs — daily</li>
+        <li>Ball pit — weekly</li>
+        <li>Swimming lessons</li>
+      </ul>
+    </div>
+    <div class="resource-cat full">
+      <h4>🇸🇬 Singapore outings for transport month</h4>
+      <ul class="resource-list" style="display:grid; grid-template-columns:1fr 1fr; gap:6px 24px;">
+        <li>Tiong Bahru train playground</li>
+        <li>MRT ride — front carriage window</li>
+        <li>East Coast Park — planes, ships, cycling</li>
+        <li>Siloso Beach — cable cars, ferries</li>
+        <li>Any bus ride — sit upstairs</li>
+        <li>Marina Bay — boats and water taxis</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- GOLDEN RULE -->
+<div class="golden-rule">
+  <p>"The world doubles in size the moment they can <strong>walk through it</strong> on their own."</p>
+  <a href="index.html">← Back to Sprout</a>
+</div>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

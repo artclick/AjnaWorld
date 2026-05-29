@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ajna · June · Farm Month</title>
+<title>Sprout · June · Farm Month</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -168,9 +168,9 @@
 
   /* WHAT HE NEEDS */
   .needs-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
     margin-bottom: 32px;
   }
 
@@ -178,23 +178,32 @@
     background: var(--deep);
     color: var(--cream);
     border-radius: 20px;
-    padding: 24px;
-    display: flex;
-    gap: 16px;
-    align-items: flex-start;
+    padding: 28px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .need-card::before {
+    content: attr(data-emoji);
+    position: absolute;
+    top: -8px;
+    right: -4px;
+    font-size: 64px;
+    opacity: 0.12;
+    line-height: 1;
   }
 
   .need-card .need-emoji {
     font-size: 28px;
-    flex-shrink: 0;
-    margin-top: 2px;
+    margin-bottom: 12px;
+    display: block;
   }
 
   .need-card h3 {
     font-family: 'Playfair Display', serif;
-    font-size: 17px;
+    font-size: 18px;
     font-weight: 600;
-    margin-bottom: 4px;
+    margin-bottom: 8px;
     color: var(--gold);
   }
 
@@ -207,6 +216,10 @@
 
   .need-card.highlight {
     background: var(--rust);
+    grid-column: span 2;
+    display: flex;
+    gap: 20px;
+    align-items: center;
   }
 
   .need-card.highlight h3 { color: var(--cream); }
@@ -664,7 +677,7 @@
 
 <!-- HERO -->
 <div class="hero">
-  <div class="hero-tag">Ajna's World · June 2026</div>
+  <div class="hero-tag">Sprout · June 2026</div>
   <h1 class="hero-title">Month <em>13</em></h1>
   <p class="hero-subtitle">The Farm Month</p>
   <div class="hero-pills">
@@ -683,33 +696,33 @@
 <!-- WHAT HE NEEDS -->
 <section class="fade-in">
   <div class="section-tag">This month</div>
-  <h2 class="section-title">What Ajna needs<br>to learn</h2>
+  <h2 class="section-title">What your toddler needs<br>to learn</h2>
   <div class="needs-grid">
     <div class="need-card" data-emoji="🖐️">
       <span class="need-emoji">🖐️</span>
       <h3>Hands First</h3>
-      <p>He learns through touch before anything else. Let him feel, squeeze, dig and explore before naming anything.</p>
+      <p>They learn through touch before anything else. Let them feel, squeeze, dig and explore before naming anything.</p>
     </div>
     <div class="need-card" data-emoji="🔁">
       <span class="need-emoji">🔁</span>
       <h3>Repetition</h3>
-      <p>Doing the same thing 20 times isn't boring — it's how his brain builds the connection. Follow his lead.</p>
+      <p>Doing the same thing 20 times isn't boring — it's how their brain builds the connection. Follow their lead.</p>
     </div>
     <div class="need-card" data-emoji="💬">
       <span class="need-emoji">💬</span>
       <h3>Your Words</h3>
-      <p>Name what he touches. "Cow. Big cow. The cow says moo." Simple, specific, attached to what he's doing right now.</p>
+      <p>Name what they touch. "Cow. Big cow. The cow says moo." Simple, specific, attached to what they're doing right now.</p>
     </div>
     <div class="need-card" data-emoji="⏱️">
       <span class="need-emoji">⏱️</span>
       <h3>Short Sessions</h3>
-      <p>5–10 minutes of full engagement is perfect. Don't extend past his interest. End while he still wants more.</p>
+      <p>5–10 minutes of full engagement is perfect. Don't extend past their interest. End while they still want more.</p>
     </div>
     <div class="need-card highlight" data-emoji="🌟">
       <span class="need-emoji" style="font-size:40px">🌟</span>
       <div>
         <h3>The Golden Rule</h3>
-        <p>He doesn't need lessons. He needs you beside him, present and curious, while he explores. Your calm attention is the most developmental thing in the room.</p>
+        <p>They don't need lessons. They need you beside them, present and curious, while they explore. Your calm attention is the most developmental thing in the room.</p>
       </div>
     </div>
   </div>
@@ -724,7 +737,7 @@
       <span class="montessori-icon">🔓</span>
       <div>
         <h4>Open & Close Lids</h4>
-        <p>Tupperware containers, spice jars, small boxes. He's obsessed with mechanisms. Let him open, close, open again. Don't rush him. Every open-close is a fine motor win.</p>
+        <p>Tupperware containers, spice jars, small boxes. At this age, mechanisms are fascinating. Let them open, close, open again. Don't rush. Every open-close is a fine motor win.</p>
       </div>
     </div>
     <div class="montessori-item">
@@ -738,35 +751,28 @@
       <span class="montessori-icon">🪆</span>
       <div>
         <h4>Nest & Stack</h4>
-        <p>Stacking cups in both directions — up and inside each other. The nesting direction is harder and newer. Model it slowly, let him try.</p>
+        <p>Stacking cups in both directions — up and inside each other. The nesting direction is harder and newer. Model it slowly, let them try.</p>
       </div>
     </div>
     <div class="montessori-item">
       <span class="montessori-icon">📮</span>
       <div>
         <h4>Object Permanence</h4>
-        <p>The DoubleYX ball drop — he drops the ball through the hole, it disappears, reappears below. The disappearing object is deeply satisfying. He'll run this experiment over and over. That repetition is the whole lesson.</p>
+        <p>The DoubleYX ball drop — they drop the ball through the hole, it disappears, reappears below. The disappearing object is deeply satisfying. They'll run this experiment over and over. That repetition is the whole lesson.</p>
       </div>
     </div>
     <div class="montessori-item">
       <span class="montessori-icon">🔩</span>
       <div>
         <h4>Nuts & Bolts</h4>
-        <p>From his tool set — large wooden nuts on bolts. You start the thread, he turns to tighten. A completely new wrist rotation movement he hasn't encountered yet.</p>
+        <p>From the tool set — large wooden nuts on bolts. You start the thread, they turn to tighten. A completely new wrist rotation movement they haven't encountered yet.</p>
       </div>
     </div>
     <div class="montessori-item">
       <span class="montessori-icon">📚</span>
       <div>
         <h4>Language Basket</h4>
-        <p>3 farm animal figurines on a small tray. Pick up the cow, say "cow," make the sound. Let him hold it. Put it down. That's the whole activity. Do it 3x a week, 3 different animals at a time.</p>
-      </div>
-    </div>
-    <div class="montessori-item">
-      <span class="montessori-icon">🌈</span>
-      <div>
-        <h4>Stacking Rings</h4>
-        <p>Place the post in front of him and hand him one ring at a time. He's learning to aim, drop, and release — a surprisingly precise movement. Size order doesn't matter yet; getting the ring on the post is the whole win. Narrate: "on, off, on again." The repetition is the point.</p>
+        <p>3 farm animal figurines on a small tray. Pick up the cow, say "cow," make the sound. Let them hold it. Put it down. That's the whole activity. Do it 3x a week, 3 different animals at a time.</p>
       </div>
     </div>
   </div>
@@ -819,7 +825,7 @@
         <div class="sensory-num">01</div>
         <div>
           <h4>Chocolate Mud Farm</h4>
-          <p>Cocoa powder + cornstarch + water = mud. Hide sheep and pig figurines inside. He digs them out with his hands. Name each animal as it appears. The Snoqualmie stones add texture. Already done once — he loved it.</p>
+          <p>Cocoa powder + cornstarch + water = mud. Hide sheep and pig figurines inside. They dig them out with their hands. Name each animal as it appears. Add natural stones for texture contrast — smooth stones against the mud is a rich sensory pairing.</p>
         </div>
       </div>
       <div class="sensory-card">
@@ -833,7 +839,7 @@
         <div class="sensory-num">03</div>
         <div>
           <h4>Oobleck Dig</h4>
-          <p>Cornstarch + water + green food colouring = farm field. Animals half-buried inside. He excavates. The oobleck behaves like both solid and liquid — genuinely surprising every time he squeezes it.</p>
+          <p>Cornstarch + water + green food colouring = farm field. Animals half-buried inside. They excavate. The oobleck behaves like both solid and liquid — genuinely surprising every time they squeeze it.</p>
         </div>
       </div>
       <div class="sensory-card">
@@ -849,9 +855,9 @@
     <div class="wall-ideas" style="margin-top:32px">
       <h4>🎨 Magnetic Wall Ideas</h4>
       <ul class="wall-list">
-        <li>Tape a large A3 green paper sheet to the wall at his height — instant farm field for the figurines to stand against</li>
+        <li>Tape a large A3 green paper sheet to the wall at their height — instant farm field for the figurines to stand against</li>
         <li>Finger paint directly on A3 paper taped to the wall — vertical surface painting uses different muscles and feels different from tray painting</li>
-        <li>Place 2 animal magnets on the wall, name them, let him move them around — the magnetic click is cause and effect he loves</li>
+        <li>Place 2 animal magnets on the wall, name them, let them move them around — the magnetic click is cause and effect they love</li>
         <li>Draw a simple barn outline on paper, tape to wall — put the animals "inside" and "outside" the barn. In, out, more, less.</li>
       </ul>
     </div>
@@ -866,18 +872,18 @@
     <div class="art-card primary">
       <span class="art-emoji">✋</span>
       <h3>Finger Painting</h3>
-      <p>One colour only. Tape an A3 sheet to the wall or high chair tray. No brush — just hands. He moves his hand, colour appears. That cause and effect is the whole lesson. Don't direct, don't demonstrate too much. Just be beside him.</p>
-      <div class="art-tip">Try: dark paper + light paint. The contrast makes his marks more dramatic and satisfying.</div>
+      <p>One colour only. Tape an A3 sheet to the wall or high chair tray. No brush — just hands. They move their hand, colour appears. That cause and effect is the whole lesson. Don't direct, don't demonstrate too much. Just be beside them.</p>
+      <div class="art-tip">Try: dark paper + light paint. The contrast makes their marks more dramatic and satisfying.</div>
     </div>
     <div class="art-card secondary">
       <span class="art-emoji">🖍️</span>
       <h3>Honeysticks Crayons</h3>
-      <p>One crayon at a time. Fist grip is correct at this age. Tape paper to the magnetic wall at standing height. Make marks alongside him on your own paper.</p>
+      <p>One crayon at a time. Fist grip is correct at this age. Tape paper to the magnetic wall at standing height. Make marks alongside them on your own paper.</p>
     </div>
     <div class="art-card secondary">
       <span class="art-emoji">🎨</span>
       <h3>Coloured Paper</h3>
-      <p>The IKEA coloured paper — try dark green or brown paper for the farm theme. Even before he marks it, naming the colour of the paper is language basket work.</p>
+      <p>The IKEA coloured paper — try dark green or brown paper for the farm theme. Even before he marks it, naming the colour is language basket work.</p>
     </div>
   </div>
 </section>
@@ -891,7 +897,7 @@
       <span class="play-item-icon">🦊</span>
       <div>
         <h4>Woodland Blockables</h4>
-        <p>Fox, beaver, grey base. He can remove the head but not insert it yet — that's the challenge to work on this month. You align the peg above the hole, he pushes down. Celebrate every success. Fade your help gradually week by week.</p>
+        <p>Fox, beaver, grey base. They can remove the head but not insert it yet — that's the challenge to work on this month. You align the peg above the hole, they push down. Celebrate every success. Fade your help gradually week by week.</p>
         <span class="play-tag">Fine motor · ZPD</span>
       </div>
     </div>
@@ -899,7 +905,7 @@
       <span class="play-item-icon">🧩</span>
       <div>
         <h4>Farm Hide & Seek Puzzle</h4>
-        <p>Lift the piece, find the hidden animal underneath, name it. He'll lift pieces but won't replace them correctly yet — that's fine. Lifting and naming is the whole activity for June. Replacing comes later. The reveal moment is the reward.</p>
+        <p>Lift the piece, find the hidden animal underneath, name it. They'll lift pieces but won't replace them correctly yet — that's fine. Lifting and naming is the whole activity for June. Replacing comes later. The reveal moment is the reward.</p>
         <span class="play-tag">Object permanence · Farm vocabulary</span>
       </div>
     </div>
@@ -907,7 +913,7 @@
       <span class="play-item-icon">🎵</span>
       <div>
         <h4>Xylophone & Musical Instruments</h4>
-        <p>He's really enjoying the xylophone this week — follow that. Strike different bars, hear different sounds. Grandma can tap a rhythm and wait for him to copy. The rattles and shakers are cause and effect — shake, hear the sound, shake again. Music is early maths: pattern, rhythm, loud and quiet.</p>
+        <p>Follow their lead with the xylophone — strike different bars, hear different sounds. Tap a rhythm and wait for them to copy. The rattles and shakers are cause and effect — shake, hear the sound, shake again. Music is early maths: pattern, rhythm, loud and quiet.</p>
         <span class="play-tag">Music · Pattern · Cause & effect</span>
       </div>
     </div>
@@ -915,7 +921,7 @@
       <span class="play-item-icon">🌈</span>
       <div>
         <h4>Coloured Cloth Play</h4>
-        <p>The sheer translucent coloured cloths are surprisingly rich for this age. Float one over his head — peekaboo with colour. Lay them flat and place farm animals on top — the colour shows through underneath. Hold one up to the light and watch his face as the colour changes the room. Scrunch, wave, drag — each action produces a different visual and tactile result. Name the colours as you go: red cloth, blue cloth. Simple, free, genuinely engaging.</p>
+        <p>The sheer translucent coloured cloths are surprisingly rich for this age. Float one over their head — peekaboo with colour. Lay them flat and place farm animals on top — the colour shows through underneath. Hold one up to the light and watch their face as the colour changes the room. Scrunch, wave, drag — each action produces a different visual and tactile result. Name the colours as you go: red cloth, blue cloth. Simple, free, genuinely engaging.</p>
         <span class="play-tag">Sensory · Colour vocabulary · Peekaboo</span>
       </div>
     </div>
@@ -931,7 +937,7 @@
       <span class="play-item-icon">🥚</span>
       <div>
         <h4>Egg Toys</h4>
-        <p>He's still working on fitting the two halves together. The trial and error persistence is the developmental work — not the result. Let him struggle productively. Only help if he's genuinely frustrated, not just working hard.</p>
+        <p>They're still working on fitting the two halves together. The trial and error persistence is the developmental work — not the result. Let them struggle productively. Only help if he's genuinely frustrated, not just working hard.</p>
         <span class="play-tag">Spatial reasoning · Persistence</span>
       </div>
     </div>
@@ -947,7 +953,7 @@
       <span class="play-item-icon">🪨</span>
       <div>
         <h4>Stapelstein Balance Stones</h4>
-        <p>Brand new this month — a rainbow set with a balance board. At 13 months: place one stone flat on the floor, hold his hands, let him step on and off. The curved surface is wobbly and completely new for his feet and balance system. Don't stack them yet. One stone, stepping on and off, is the whole activity. Gradually reduce how much you hold his hands over the coming weeks. The balance board comes later — once he's confident on a single stone.</p>
+        <p>Brand new this month — a rainbow set with a balance board. At 13 months: place one stone flat on the floor, hold their hands, let him step on and off. The curved surface is wobbly and completely new for their feet and balance system. Don't stack them yet. One stone, stepping on and off, is the whole activity. Gradually reduce how much you hold their hands over the coming weeks. The balance board comes later — once they're confident on a single stone.</p>
         <span class="play-tag">Balance · Proprioception · Body confidence</span>
       </div>
     </div>
@@ -955,7 +961,7 @@
       <span class="play-item-icon">🪜</span>
       <div>
         <h4>Stairs — Daily</h4>
-        <p>He already climbs stairs every day and loves it. Keep this going — it's one of the best gross motor activities available to him right now. Up is his strength. Work on coming down too: facing the stairs, one knee at a time. Stay close, let him do the work. Vary the stairs where possible — building stairs, park stairs, outdoor steps all feel different underfoot.</p>
+        <p>They'll love climbing stairs every day and loves it. Keep this going — it's one of the best gross motor activities available at this age. Going up comes first. Work on coming down too: facing the stairs, one knee at a time. Stay close, let them do the work. Vary the stairs where possible — building stairs, park stairs, outdoor steps all feel different underfoot.</p>
         <span class="play-tag">Leg strength · Bilateral coordination · Confidence</span>
       </div>
     </div>
@@ -963,7 +969,7 @@
       <span class="play-item-icon">🔺</span>
       <div>
         <h4>Pikler Triangle</h4>
-        <p>The Pikler is one of the most underrated gross motor tools at this age — it builds upper body strength, risk assessment, and the specific confidence that comes from navigating height independently. To make it irresistible: drape a coloured cloth over one side to create a den underneath (he'll want to crawl in). Place a favourite farm animal at the top rung as a target to reach. Sit on the other side and play peekaboo through the rungs. The climbing is the activity — the play around it is the invitation.</p>
+        <p>The Pikler is one of the most underrated gross motor tools at this age — it builds upper body strength, risk assessment, and the specific confidence that comes from navigating height independently. To make it irresistible: drape a coloured cloth over one side to create a den underneath (they'll want to crawl in). Place a favourite farm animal at the top rung as a target to reach. Sit on the other side and play peekaboo through the rungs. The climbing is the activity — the play around it is the invitation.</p>
         <span class="play-tag">Climbing · Risk assessment · Upper body strength</span>
       </div>
     </div>
@@ -971,7 +977,7 @@
       <span class="play-item-icon">🚲</span>
       <div>
         <h4>Bike Rides</h4>
-        <p>This is one of the richest developmental activities available — and it looks like just a ride. Research on vestibular development shows that passive movement through varied environments activates the balance system, spatial reasoning, and depth perception simultaneously. His brain is processing the moving world, the wind, the sounds, the changing terrain — all at once. Aim for 20–30 minutes with a destination that has a sensory reward: sandpit, water feature, open grass to crawl on. Narrate what you pass: "big tree, red bus, hear the birds." The destination matters as much as the journey.</p>
+        <p>This is one of the richest developmental activities available — and it looks like just a ride. Research on vestibular development shows that passive movement through varied environments activates the balance system, spatial reasoning, and depth perception simultaneously. Their brain is processing the moving world, the wind, the sounds, the changing terrain — all at once. Aim for 20–30 minutes with a destination that has a sensory reward: sandpit, water feature, open grass to crawl on. Narrate what you pass: "big tree, red bus, hear the birds." The destination matters as much as the journey.</p>
         <span class="play-tag">Vestibular · Visual-spatial · Outdoor · Language</span>
       </div>
     </div>
@@ -1021,7 +1027,7 @@
 
     <div class="maths-tip">
       <h4>The commentator rule</h4>
-      <p>Don't create special maths time. Just narrate what's already happening with precise words. When he fills the bowl with rice — "full bowl." When he dumps it — "all gone, empty." When he picks up the big cow — "big cow." The maths is already everywhere. Your words are the only thing to add.</p>
+      <p>Don't create special maths time. Just narrate what's already happening with precise words. When they fill the bowl with rice — "full bowl." When they dump it — "all gone, empty." When they pick up the big cow — "big cow." The maths is already everywhere. Your words are the only thing to add.</p>
     </div>
   </div>
 </div>
@@ -1054,7 +1060,7 @@
       <ul class="resource-list">
         <li>Cornstarch + cocoa (oobleck/mud)</li>
         <li>White sensory tray</li>
-        <li>Snoqualmie stones</li>
+        <li>Natural stones and shells</li>
         <li>Dry rice / oats</li>
         <li>Full fat cow's milk + frother</li>
         <li>Sheer coloured cloths (5–7 colours)</li>
@@ -1077,7 +1083,7 @@
         <li>Xylophone (favourite this week)</li>
         <li>Musical rattles</li>
         <li>Small instruments basket</li>
-        <li>Grandma's nursery rhymes</li>
+        <li>Nursery rhymes and singing</li>
       </ul>
     </div>
     <div class="resource-category">
@@ -1107,7 +1113,8 @@
 
 <!-- GOLDEN RULE -->
 <div class="golden-rule">
-  <p>"The goal isn't to <strong>teach</strong> him. It's to be <strong>curious alongside him</strong> — and let him lead."</p>
+  <p>"The goal isn't to <strong>teach</strong> them. It's to be <strong>curious alongside them</strong> — and let them lead."</p>
+  <a href="index.html" style="display:inline-block; margin-top:28px; font-family:'DM Sans',sans-serif; font-size:12px; font-weight:500; letter-spacing:0.15em; text-transform:uppercase; color:rgba(61,43,31,0.5); text-decoration:none;">← Back to Sprout</a>
 </div>
 
 <script>
